@@ -42,19 +42,34 @@ class _YoutubeViewerState extends State<YoutubeViewer> {
 
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayerBuilder(
-      player: YoutubePlayer(controller: controller),
-      builder: (context, player) {
-        return Directionality(
-          textDirection: TextDirection.rtl,
-          child: Scaffold(
-            appBar: AppBar(
-              title: Text(widget.name),
-            ),
-            body: Center(child: player),
+    return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF3283bb),
+              Color(0xFFd1e3f0),
+            ],
           ),
-        );
-      },
-    );
+        ),
+        child: Center(
+          child: YoutubePlayerBuilder(
+            player: YoutubePlayer(controller: controller),
+            builder: (context, player) {
+              return Directionality(
+                textDirection: TextDirection.rtl,
+                child: Scaffold(
+                  appBar: AppBar(
+                    title: Text(widget.name),
+                  ),
+                  body: Center(child: player),
+                ),
+              );
+            },
+          ),
+        ));
   }
 }

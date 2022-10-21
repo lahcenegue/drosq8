@@ -63,20 +63,21 @@ class _Mp3PlayerState extends State<Mp3Player> {
         body: Stack(
           children: [
             Positioned(
-                child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFF3283bb),
-                    Color(0xFFd1e3f0),
-                  ],
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFF3283bb),
+                      Color(0xFFd1e3f0),
+                    ],
+                  ),
                 ),
               ),
-            )),
+            ),
             Positioned(
               top: 0,
               left: MediaQuery.of(context).size.width / 4,
