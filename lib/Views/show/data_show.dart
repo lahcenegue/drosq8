@@ -1,6 +1,7 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
 import 'package:drosq8/Views/show/audio_player.dart';
 import 'package:drosq8/Views/show/pdf_viewer.dart';
+import 'package:drosq8/Views/show/youtbe_viewer.dart';
 import 'package:flutter/material.dart';
 
 class DataShow extends StatefulWidget {
@@ -42,21 +43,26 @@ class _DataShowState extends State<DataShow> {
                     name: widget.name,
                     catId: widget.catId,
                   )
-                : Center(
-                    child: Container(
-                      height: 100,
-                      width: 200,
-                      color: Colors.blue,
-                      child: const Center(
-                          child: Text(
-                        'قريبا',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
+                : hvm.listLink.contains('www.youtube.com')
+                    ? YoutubeViewer(
+                        name: widget.name,
+                        link: hvm.listLink,
+                      )
+                    : Center(
+                        child: Container(
+                          height: 100,
+                          width: 200,
+                          color: Colors.blue,
+                          child: const Center(
+                              child: Text(
+                            'قريبا',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
+                          )),
                         ),
-                      )),
-                    ),
-                  ),
+                      ),
       ),
     );
   }

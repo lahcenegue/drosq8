@@ -30,31 +30,48 @@ class _CategoriesListState extends State<CategoriesList> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
       ),
-      child: ListView.builder(
-          itemCount: hvm.listCateg.length,
-          itemBuilder: (buildContext, index) {
-            var cat = hvm.listCateg[index];
-            return Card(
-              elevation: 2,
-              child: ListTile(
-                title: Text(
-                  cat.name,
-                  style: const TextStyle(fontSize: 20),
-                ),
-                trailing: const Icon(Icons.arrow_back_ios_new),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SubCategories(
-                              catId: cat.id,
-                              name: cat.name,
-                            )),
-                  );
-                },
-              ),
-            );
-          }),
+      child: hvm.listCateg.isEmpty
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              physics: const ScrollPhysics(),
+              itemCount: hvm.listCateg.length,
+              itemBuilder: (buildContext, index) {
+                var cat = hvm.listCateg[index];
+                return Container(
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(width: 1, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.7),
+                        offset: const Offset(3, 4),
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      cat.name,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    trailing: const Icon(Icons.arrow_back_ios_new),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SubCategories(
+                                  catId: cat.id,
+                                  name: cat.name,
+                                )),
+                      );
+                    },
+                  ),
+                );
+              }),
     );
   }
 }

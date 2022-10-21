@@ -27,7 +27,15 @@ class MainScreen extends StatelessWidget {
             const BooksShow(
               catId: '260',
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 10),
+            Separation(
+              title: 'الصوتيات',
+              onTap: () {},
+            ),
+            const SizedBox(height: 10),
+            const BooksShow(
+              catId: '218',
+            ),
 
             // const BookList(),
             // const Separation(title: 'صوتيات'),
