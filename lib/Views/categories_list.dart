@@ -1,5 +1,4 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
-import 'package:drosq8/widgets/list_tile.dart';
 import 'package:flutter/material.dart';
 
 import 'subcategories.dart';
@@ -30,15 +29,15 @@ class _CategoriesListState extends State<CategoriesList> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
       ),
-      child: hvm.listCateg.isEmpty
+      child: hvm.listCateg == null || hvm.listCateg!.isEmpty
           ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
               physics: const ScrollPhysics(),
-              itemCount: hvm.listCateg.length,
+              itemCount: hvm.listCateg!.length,
               itemBuilder: (buildContext, index) {
-                var cat = hvm.listCateg[index];
+                var cat = hvm.listCateg![index];
                 return Container(
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(

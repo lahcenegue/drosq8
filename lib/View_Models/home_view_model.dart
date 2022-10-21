@@ -8,9 +8,9 @@ import 'package:drosq8/models/categories_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewModel extends ChangeNotifier {
-  List<CategoriesViewModel> listCateg = [];
-  List<SubCategoriesViewModel> listSubCateg = [];
-  List<MatterViewModel> listMatter = [];
+  List<CategoriesViewModel>? listCateg;
+  List<SubCategoriesViewModel>? listSubCateg;
+  List<MatterViewModel>? listMatter;
   String listLink = "";
 
 //Categories list

@@ -33,65 +33,70 @@ class _BooksShowState extends State<BooksShow> {
 
     return SizedBox(
       height: 500,
-      child: GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(20),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 220,
-            childAspectRatio: 3 / 4,
-            crossAxisSpacing: 30,
-            mainAxisSpacing: 30,
-          ),
-          itemCount: hvm.listMatter.length > 4 ? 4 : hvm.listMatter.length,
-          itemBuilder: (buildContext, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => PDFShow(
-                            catId: hvm.listMatter[index].id,
-                            name: hvm.listMatter[index].name,
-                          )),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.black,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    // image
-                    hvm.listMatter[index].image.isEmpty
-                        ? Image.asset(
-                            ConstantManager.book,
-                            height: 150,
-                          )
-                        : Image.network(
-                            '${ConstantManager.url}/${hvm.listMatter[index].image}',
-                            height: 150,
-                          ),
-
-                    // text
-                    Text(
-                      hvm.listMatter[index].name,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+      child: hvm.listMatter == null
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(20),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 220,
+                childAspectRatio: 3 / 4,
+                crossAxisSpacing: 30,
+                mainAxisSpacing: 30,
               ),
-            );
-          }),
+              itemCount:
+                  hvm.listMatter!.length > 4 ? 4 : hvm.listMatter!.length,
+              itemBuilder: (buildContext, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PDFShow(
+                                catId: hvm.listMatter![index].id,
+                                name: hvm.listMatter![index].name,
+                              )),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.black,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        // image
+                        hvm.listMatter![index].image.isEmpty
+                            ? Image.asset(
+                                ConstantManager.book,
+                                height: 150,
+                              )
+                            : Image.network(
+                                '${ConstantManager.url}/${hvm.listMatter![index].image}',
+                                height: 150,
+                              ),
+
+                        // text
+                        Text(
+                          hvm.listMatter![index].name,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
     );
   }
 }

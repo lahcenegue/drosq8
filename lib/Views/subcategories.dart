@@ -32,7 +32,6 @@ class _SubCategoriesState extends State<SubCategories> {
     hvm.addListener(() {
       setState(() {});
     });
-    final double screenWidth = MediaQuery.of(context).size.width;
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -41,99 +40,133 @@ class _SubCategoriesState extends State<SubCategories> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(widget.name),
-            bottom: TabBar(tabs: [
-              Tab(text: 'أقسام ${widget.name}'),
-              Tab(text: 'مواد ${widget.name}'),
+            bottom: const TabBar(tabs: [
+              Tab(text: 'الأقسام'),
+              Tab(text: 'المواد'),
             ]),
           ),
           body: TabBarView(
             children: [
               //الاقسام
-              ListView.builder(
-                  itemCount: hvm.listSubCateg.length,
-                  itemBuilder: (buildContext, index) {
-                    return Card(
-                      elevation: 3,
-                      child: ListTile(
-                        title: Text(hvm.listSubCateg[index].name),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SubCategories(
-                                      catId: hvm.listSubCateg[index].id,
-                                      name: hvm.listSubCateg[index].name,
-                                    )),
-                          );
-                        },
-                      ),
-                    );
-                  }),
+              hvm.listSubCateg == null
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : hvm.listSubCateg!.isEmpty
+                      ? const Center(
+                          child: Text('لا يوجد أقسام، راجع المواد'),
+                        )
+                      : ListView.builder(
+                          itemCount: hvm.listSubCateg!.length,
+                          itemBuilder: (buildContext, index) {
+                            return Container(
+                              margin: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(width: 1, color: Colors.grey),
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.7),
+                                    offset: const Offset(3, 4),
+                                    blurRadius: 5,
+                                  ),
+                                ],
+                              ),
+                              child: ListTile(
+                                title: Text(hvm.listSubCateg![index].name),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SubCategories(
+                                              catId:
+                                                  hvm.listSubCateg![index].id,
+                                              name:
+                                                  hvm.listSubCateg![index].name,
+                                            )),
+                                  );
+                                },
+                              ),
+                            );
+                          }),
 
               // المواد
-              GridView.builder(
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 220,
-                    childAspectRatio: 2 / 3,
-                    crossAxisSpacing: 30,
-                    mainAxisSpacing: 30,
-                  ),
-                  itemCount: hvm.listMatter.length,
-                  itemBuilder: (buildContext, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DataShow(
-                                    catId: hvm.listMatter[index].id,
-                                    name: hvm.listMatter[index].name,
-                                  )),
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.black,
+              hvm.listMatter == null
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : hvm.listMatter!.isEmpty
+                      ? const Center(
+                          child: Text('لا يوجد مواد راجع الأقسام'),
+                        )
+                      : GridView.builder(
+                          padding: const EdgeInsets.only(
+                            left: 20,
+                            right: 20,
                           ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            // image
-                            hvm.listMatter[index].image.isEmpty
-                                ? Image.asset(
-                                    ConstantManager.book,
-                                    height: 180,
-                                  )
-                                : Image.network(
-                                    hvm.listMatter[index].image.contains('http')
-                                        ? hvm.listMatter[index].image
-                                        : '${ConstantManager.url}/${hvm.listMatter[index].image}',
-                                    height: 180,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 220,
+                            childAspectRatio: 2 / 3,
+                            crossAxisSpacing: 30,
+                            mainAxisSpacing: 30,
+                          ),
+                          itemCount: hvm.listMatter!.length,
+                          itemBuilder: (buildContext, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DataShow(
+                                            catId: hvm.listMatter![index].id,
+                                            name: hvm.listMatter![index].name,
+                                          )),
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1,
+                                    color: Colors.black,
                                   ),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    // image
+                                    hvm.listMatter![index].image.isEmpty
+                                        ? Image.asset(
+                                            ConstantManager.book,
+                                            height: 180,
+                                          )
+                                        : Image.network(
+                                            hvm.listMatter![index].image
+                                                    .contains('http')
+                                                ? hvm.listMatter![index].image
+                                                : '${ConstantManager.url}/${hvm.listMatter![index].image}',
+                                            height: 180,
+                                          ),
 
-                            // text
-                            Text(
-                              hvm.listMatter[index].name,
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                                    // text
+                                    Text(
+                                      hvm.listMatter![index].name,
+                                      textAlign: TextAlign.center,
+                                      maxLines: 2,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                            );
+                          }),
             ],
           ),
         ),
