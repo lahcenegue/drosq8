@@ -60,59 +60,133 @@ class _Mp3PlayerState extends State<Mp3Player> {
         appBar: AppBar(
           title: Text(widget.name),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.name,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Slider(
-                min: 0,
-                max: duration.inSeconds.toDouble(),
-                value: position.inSeconds.toDouble(),
-                onChanged: (value) async {
-                  final position = Duration(seconds: value.toInt());
-                  await audioPlayer.seek(position);
-                  //await audioPlayer.resume();
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(formatTime(position)),
-                    Text(formatTime(duration - position)),
+        body: Stack(
+          children: [
+            Positioned(
+                child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFF3283bb),
+                    Color(0xFFd1e3f0),
                   ],
                 ),
               ),
-              CircleAvatar(
-                radius: 35,
-                child: IconButton(
-                  icon: Icon(
-                    isPlaying ? Icons.pause : Icons.play_arrow,
+            )),
+            Positioned(
+              top: 0,
+              left: MediaQuery.of(context).size.width / 4,
+              child: Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.height / 3,
+                    decoration: const BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(120),
+                        bottomRight: Radius.circular(120),
+                      ),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xFF082336),
+                          Color(0xFF196aa2),
+                        ],
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFF051724),
+                          offset: Offset(8, 3),
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'asstes/images/music.png',
+                        color: Colors.grey,
+                        height: 90,
+                      ),
+                    ),
                   ),
-                  iconSize: 50,
-                  onPressed: () async {
-                    if (isPlaying) {
-                      await audioPlayer.pause();
-                    } else {
-                      await audioPlayer
-                          .play('https://www.drosq8.com/${hvm.listLink}');
-                    }
-                  },
+                  const SizedBox(height: 30),
+                  Text(
+                    widget.name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.height / 2.8,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  color: Colors.white60,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(100),
+                    topRight: Radius.circular(100),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 35,
+                      child: IconButton(
+                        icon: Icon(
+                          isPlaying ? Icons.pause : Icons.play_arrow,
+                        ),
+                        iconSize: 50,
+                        onPressed: () async {
+                          if (isPlaying) {
+                            await audioPlayer.pause();
+                          } else {
+                            await audioPlayer
+                                .play('https://www.drosq8.com/${hvm.listLink}');
+                          }
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Slider(
+                      min: 0,
+                      max: duration.inSeconds.toDouble(),
+                      value: position.inSeconds.toDouble(),
+                      onChanged: (value) async {
+                        final position = Duration(seconds: value.toInt());
+                        await audioPlayer.seek(position);
+                        //await audioPlayer.resume();
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(formatTime(position)),
+                          Text(formatTime(duration - position)),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
