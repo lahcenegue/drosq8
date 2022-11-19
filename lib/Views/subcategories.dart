@@ -36,31 +36,60 @@ class _SubCategoriesState extends State<SubCategories> {
 
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(widget.name),
-            bottom: const TabBar(tabs: [
-              Tab(text: 'الأقسام'),
-              Tab(text: 'المواد'),
-            ]),
-          ),
-          body: TabBarView(
-            children: [
-              //الاقسام
-              CategoriesView(
-                catId: widget.catId,
+      child: hvm.listSubCateg == null || hvm.listMatter == null
+          ? const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
               ),
+            )
+          : DefaultTabController(
+              length:
+                  hvm.listSubCateg!.isEmpty || hvm.listMatter!.isEmpty ? 1 : 2,
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(widget.name),
+                  bottom: hvm.listSubCateg!.isEmpty
+                      ? const TabBar(tabs: [
+                          Tab(text: 'المواد'),
+                        ])
+                      : hvm.listMatter!.isEmpty
+                          ? const TabBar(tabs: [
+                              Tab(text: 'الأقسام'),
+                            ])
+                          : const TabBar(tabs: [
+                              Tab(text: 'الأقسام'),
+                              Tab(text: 'المواد'),
+                            ]),
+                ),
+                body: hvm.listSubCateg!.isEmpty
+                    ? TabBarView(children: [
+                        // المواد
+                        MatterView(
+                          catId: widget.catId,
+                        ),
+                      ])
+                    : hvm.listMatter!.isEmpty
+                        ? TabBarView(children: [
+                            //الاقسام
+                            CategoriesView(
+                              catId: widget.catId,
+                            ),
+                          ])
+                        : TabBarView(
+                            children: [
+                              //الاقسام
+                              CategoriesView(
+                                catId: widget.catId,
+                              ),
 
-              // المواد
-              MatterView(
-                catId: widget.catId,
+                              // المواد
+                              MatterView(
+                                catId: widget.catId,
+                              ),
+                            ],
+                          ),
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
