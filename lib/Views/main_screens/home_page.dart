@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget {
             ),
 
             const BooksShow(
-              catId: '260',
+              catId: '9',
             ),
             const SizedBox(height: 10),
             Separation(
@@ -34,9 +34,9 @@ class MainScreen extends StatelessWidget {
               onTap: () {},
             ),
             const SizedBox(height: 10),
-            const AudioShow(
-              catId: '218',
-            ),
+            // const AudioShow(
+            //   catId: '6',
+            // ),
 
             // const BookList(),
             // const Separation(title: 'صوتيات'),

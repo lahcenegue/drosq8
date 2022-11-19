@@ -72,7 +72,8 @@ class _BooksShowState extends State<BooksShow> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         // image
-                        hvm.listMatter![index].image.isEmpty
+                        hvm.listMatter![index].image.isEmpty ||
+                                hvm.listMatter![index].image == null
                             ? Image.asset(
                                 ConstantManager.book,
                                 height: 150,

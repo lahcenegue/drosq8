@@ -36,10 +36,15 @@ class _PDFShowState extends State<PDFShow> {
         appBar: AppBar(
           title: Text(widget.name),
         ),
-        body: SfPdfViewer.network(
-          'https://www.drosq8.com/${hvm.listLink}',
-          key: _pdfViewerKey,
-        ),
+        body: hvm.listLink.contains('https://')
+            ? SfPdfViewer.network(
+                hvm.listLink,
+                key: _pdfViewerKey,
+              )
+            : SfPdfViewer.network(
+                'https://www.drosq8.com/${hvm.listLink}',
+                key: _pdfViewerKey,
+              ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -66,13 +67,13 @@ class _Mp3PlayerState extends State<Mp3Player> {
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Color(0xFF3283bb),
-                      Color(0xFFd1e3f0),
+                      ConstantManager.gradient1,
+                      ConstantManager.gradient2,
                     ],
                   ),
                 ),

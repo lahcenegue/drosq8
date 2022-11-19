@@ -61,7 +61,7 @@ class HomeViewModel extends ChangeNotifier {
 
     listSubCateg =
         jsonMap.map((e) => SubCategoriesViewModel(subcategories: e)).toList();
-    print(listSubCateg!.length);
+
     for (int i = 0; i < 6; i++) {
       listId.add(listSubCateg![i].id);
     }
