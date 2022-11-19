@@ -1,4 +1,5 @@
-import 'package:drosq8/Views/main_screens/books_show.dart';
+import 'package:drosq8/widgets/audio_show.dart';
+import 'package:drosq8/widgets/books_show.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:drosq8/widgets/separation.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class MainScreen extends StatelessWidget {
               onTap: () {},
             ),
             const SizedBox(height: 10),
-            const BooksShow(
+            const AudioShow(
               catId: '218',
             ),
 

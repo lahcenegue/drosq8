@@ -36,24 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Icon(Icons.gps_fixed),
           ],
         ),
-        // drawer: Drawer(
-        //   backgroundColor: ConstantManager.mainColor,
-        //   child: ListView(
-        //     children: [
-        //       DrawerHeader(
-        //         decoration: BoxDecoration(
-        //           color: ConstantManager.mainColor,
-        //         ),
-        //         child: Image.asset(
-        //           ConstantManager.header,
-        //           fit: BoxFit.cover,
-        //         ),
-        //       ),
-        //       const Text('الاقسام'),
-        //       const CategoriesList(),
-        //     ],
-        //   ),
-        // ),
         bottomNavigationBar: CurvedNavigationBar(
           index: index,
           height: 60,

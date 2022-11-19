@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants/constant.dart';
 
 class Separation extends StatelessWidget {

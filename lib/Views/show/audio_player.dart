@@ -80,7 +80,7 @@ class _Mp3PlayerState extends State<Mp3Player> {
             ),
             Positioned(
               top: 0,
-              left: MediaQuery.of(context).size.width / 4,
+              left: (MediaQuery.of(context).size.width * 0.25),
               child: Column(
                 children: [
                   Container(
@@ -116,14 +116,19 @@ class _Mp3PlayerState extends State<Mp3Player> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  Text(
-                    widget.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: Text(
+                      widget.name,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],

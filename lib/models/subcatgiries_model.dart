@@ -33,18 +33,21 @@ class ListSubModel {
 
 // المواد Model
 class MatterModel {
-  final String name;
   final String id;
+  final String name;
+  final String comm;
   final String image;
   MatterModel({
-    required this.name,
     required this.id,
+    required this.name,
+    required this.comm,
     required this.image,
   });
   factory MatterModel.fromJson(Map<String, dynamic> json) {
     return MatterModel(
-      name: json['name'],
       id: json['id'],
+      name: json['name'],
+      comm: json['comm'],
       image: json['image'],
     );
   }

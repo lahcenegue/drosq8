@@ -11,6 +11,7 @@ class HomeViewModel extends ChangeNotifier {
   List<CategoriesViewModel>? listCateg;
   List<SubCategoriesViewModel>? listSubCateg;
   List<MatterViewModel>? listMatter;
+  List<String> listId = [];
   String listLink = "";
 
 //Categories list
@@ -51,6 +52,19 @@ class HomeViewModel extends ChangeNotifier {
         jsonContent.map((e) => LinkViewModel(linkModel: e)).toList();
     listLink = listLink2[0].link;
 
+    notifyListeners();
+  }
+
+  //list audio
+  Future<void> fetchListAudio(String catid) async {
+    List jsonMap = await SubCategoriesApi(catId: catid).loadSubCat();
+
+    listSubCateg =
+        jsonMap.map((e) => SubCategoriesViewModel(subcategories: e)).toList();
+    print(listSubCateg!.length);
+    for (int i = 0; i < 6; i++) {
+      listId.add(listSubCateg![i].id);
+    }
     notifyListeners();
   }
 }

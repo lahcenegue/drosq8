@@ -74,24 +74,3 @@ class _CategoriesListState extends State<CategoriesList> {
     );
   }
 }
-
-
-// ListView(
-//         children: [
-//           CustomListTile(
-//             name: 'كتب إلكترونية',
-//             onTap: () {
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (context) => const SubCategories(
-//                           catId: '260',
-//                           name: 'كتب إلكترونية',
-//                         )),
-//               );
-//             },
-//           ),
-//         ],
-//       ),
-
-
