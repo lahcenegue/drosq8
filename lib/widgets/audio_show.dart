@@ -1,16 +1,11 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:drosq8/View_Models/home_view_model.dart';
-import 'package:drosq8/Views/show/pdf_viewer.dart';
-
 import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class AudioShow extends StatefulWidget {
-  final String catId;
-
   const AudioShow({
     Key? key,
-    required this.catId,
   }) : super(key: key);
 
   @override
@@ -27,7 +22,7 @@ class _AudioShowState extends State<AudioShow> {
   @override
   void initState() {
     super.initState();
-    hvm.fetchListAudio('218');
+    hvm.fetchListAudio(ConstantManager.audiosId);
     //hvm.fetchLink(widget.catId);
     audioPlayer.onPlayerStateChanged.listen((state) {
       setState(() {
@@ -56,17 +51,22 @@ class _AudioShowState extends State<AudioShow> {
 
     return SizedBox(
       height: 500,
-      child: hvm.listId == null
+      child: hvm.listId.isEmpty
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
+          : ListView.separated(
               itemCount: 4,
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
               itemBuilder: (buildContext, index) {
                 return ListTile(
-                  trailing: Stack(children: [
-                    CircleAvatar(
-                      radius: 35,
+                  trailing: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: ConstantManager.mainColor,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Center(
                       child: IconButton(
                         onPressed: () async {
                           if (isPlaying) {
@@ -79,10 +79,11 @@ class _AudioShowState extends State<AudioShow> {
                         icon: Icon(
                           isPlaying ? Icons.pause : Icons.play_arrow,
                         ),
-                        iconSize: 50,
+                        iconSize: 30,
+                        color: Colors.white,
                       ),
-                    )
-                  ]),
+                    ),
+                  ),
                   title: Text('test'),
                 );
               }),

@@ -10,8 +10,10 @@ import 'package:flutter/material.dart';
 class HomeViewModel extends ChangeNotifier {
   List<CategoriesViewModel>? listCateg;
   List<SubCategoriesViewModel>? listSubCateg;
+  List<SubCategoriesViewModel>? listSubCateg2;
   List<MatterViewModel>? listMatter;
   List<String> listId = [];
+  List<String> listLinkAudio = [];
   String listLink = "";
 
 //Categories list
@@ -27,11 +29,12 @@ class HomeViewModel extends ChangeNotifier {
 
   //SubCategories List
   Future<void> fetchSubCategories(String catid) async {
+    print('=========1=========');
     List jsonMap = await SubCategoriesApi(catId: catid).loadSubCat();
-
+    print('=========2=========');
     listSubCateg =
         jsonMap.map((e) => SubCategoriesViewModel(subcategories: e)).toList();
-
+    print('=========3=========');
     notifyListeners();
   }
 
@@ -59,12 +62,19 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> fetchListAudio(String catid) async {
     List jsonMap = await SubCategoriesApi(catId: catid).loadSubCat();
 
-    listSubCateg =
+    listSubCateg2 =
         jsonMap.map((e) => SubCategoriesViewModel(subcategories: e)).toList();
 
     for (int i = 0; i < 6; i++) {
-      listId.add(listSubCateg![i].id);
+      listId.add(listSubCateg2![i].id);
+      fetchSubCategories(listSubCateg2![i].id);
+      listLinkAudio.add(value)
+      // listLinkAudio.add('');
+      // print('--------------------test----------------');
+      // print(listSubCateg![i].id);
     }
+    print(listId);
+    // print(listSubCateg![1].id);
     notifyListeners();
   }
 }

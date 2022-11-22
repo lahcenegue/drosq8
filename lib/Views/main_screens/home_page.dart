@@ -20,33 +20,18 @@ class MainScreen extends StatelessWidget {
               ConstantManager.header,
               width: screenWidth,
             ),
-            Separation(
-              title: 'الكتب الإلكترونية',
-              onTap: () {},
-            ),
-
-            const BooksShow(
-              catId: '9',
-            ),
+            // Separation(
+            //   title: 'الكتب الإلكترونية',
+            //   onTap: () {},
+            // ),
+            // const BooksShow(),
             const SizedBox(height: 10),
             Separation(
               title: 'الصوتيات',
               onTap: () {},
             ),
             const SizedBox(height: 10),
-            // const AudioShow(
-            //   catId: '6',
-            // ),
-
-            // const BookList(),
-            // const Separation(title: 'صوتيات'),
-            // const AudioList(
-            //   icon: Icon(Icons.volume_up),
-            // ),
-            // const Separation(title: 'بث مباشر'),
-            // const AudioList(
-            //   icon: Icon(Icons.live_tv_rounded),
-            // ),
+            const AudioShow(),
           ],
         ),
       )),

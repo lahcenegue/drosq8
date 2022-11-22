@@ -5,11 +5,8 @@ import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class BooksShow extends StatefulWidget {
-  final String catId;
-
   const BooksShow({
     Key? key,
-    required this.catId,
   }) : super(key: key);
 
   @override
@@ -21,8 +18,8 @@ class _BooksShowState extends State<BooksShow> {
   @override
   void initState() {
     super.initState();
-    hvm.fetchSubCategories(widget.catId);
-    hvm.fetchMatter(widget.catId);
+    hvm.fetchSubCategories(ConstantManager.booksId);
+    hvm.fetchMatter(ConstantManager.booksId);
   }
 
   @override
@@ -73,7 +70,9 @@ class _BooksShowState extends State<BooksShow> {
                       children: [
                         // image
                         hvm.listMatter![index].image.isEmpty ||
-                                hvm.listMatter![index].image == null
+                                hvm.listMatter![index].image == "" ||
+                                hvm.listMatter![index].image
+                                    .contains('upload/upload')
                             ? Image.asset(
                                 ConstantManager.book,
                                 height: 150,
