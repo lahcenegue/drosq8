@@ -68,13 +68,13 @@ class HomeViewModel extends ChangeNotifier {
     for (int i = 0; i < 6; i++) {
       listId.add(listSubCateg2![i].id);
       fetchSubCategories(listSubCateg2![i].id);
-      listLinkAudio.add(value)
+      // listLinkAudio.add(listSubCateg![0].id);
       // listLinkAudio.add('');
       // print('--------------------test----------------');
       // print(listSubCateg![i].id);
     }
     print(listId);
-    // print(listSubCateg![1].id);
+    print(listLinkAudio);
     notifyListeners();
   }
 }

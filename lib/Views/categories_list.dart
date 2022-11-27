@@ -1,6 +1,5 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
 import 'package:flutter/material.dart';
-
 import 'subcategories.dart';
 
 class CategoriesList extends StatefulWidget {
@@ -37,7 +36,6 @@ class _CategoriesListState extends State<CategoriesList> {
               physics: const ScrollPhysics(),
               itemCount: hvm.listCateg!.length,
               itemBuilder: (buildContext, index) {
-                var cat = hvm.listCateg![index];
                 return Container(
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -54,7 +52,7 @@ class _CategoriesListState extends State<CategoriesList> {
                   ),
                   child: ListTile(
                     title: Text(
-                      cat.name,
+                      hvm.listCateg![index].name,
                       style: const TextStyle(fontSize: 20),
                     ),
                     trailing: const Icon(Icons.arrow_back_ios_new),
@@ -63,8 +61,8 @@ class _CategoriesListState extends State<CategoriesList> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => SubCategories(
-                                  catId: cat.id,
-                                  name: cat.name,
+                                  catId: hvm.listCateg![index].id,
+                                  name: hvm.listCateg![index].name,
                                 )),
                       );
                     },

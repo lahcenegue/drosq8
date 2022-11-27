@@ -10,17 +10,12 @@ class CategoriesApi {
       http.Response response = await http.get(url);
 
       if (response.statusCode == 200) {
-        print('=========== response');
-        print(response.body);
         var data = convert.jsonDecode(response.body);
 
         Iterable list = data;
 
         List<CategoriesModel> categoriesList =
             list.map((e) => CategoriesModel.fromJson(e)).toList();
-
-        print('=========== categorie');
-        print(categoriesList);
 
         return categoriesList;
       }

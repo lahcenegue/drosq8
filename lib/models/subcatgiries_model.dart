@@ -47,7 +47,7 @@ class MatterModel {
     return MatterModel(
       id: json['id'],
       name: json['name'],
-      comm: json['comm'],
+      comm: json['comm'].toString(),
       image: json['image'],
     );
   }

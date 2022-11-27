@@ -3,7 +3,6 @@ import 'package:drosq8/constants/constant.dart';
 import 'package:drosq8/widgets/categories.dart';
 import 'package:drosq8/widgets/matter.dart';
 import 'package:flutter/material.dart';
-import 'show/data_show.dart';
 
 class SubCategories extends StatefulWidget {
   final String catId;

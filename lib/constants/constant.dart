@@ -8,7 +8,7 @@ class ConstantManager {
   static String book = 'asstes/images/book.png';
 
   //links
-  static String url = 'https://www.drosq8.com';
+  static String url = 'https://www.salemalajmi.com/main';
 
   //Colors
 
@@ -19,6 +19,6 @@ class ConstantManager {
 
   // categories
 
-  static String booksId = '260';
-  static String audiosId = '218';
+  static String booksId = '9';
+  static String audiosId = '6';
 }
