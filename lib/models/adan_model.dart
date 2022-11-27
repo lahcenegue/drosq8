@@ -388,8 +388,8 @@ class Params {
   Params({this.fajr, this.isha});
 
   Params.fromJson(Map<String, dynamic> json) {
-    fajr = json['Fajr'];
-    isha = json['Isha'];
+    fajr = double.parse(json['Fajr'].toString());
+    isha = double.parse(json['Isha'].toString());
   }
 
   Map<String, dynamic> toJson() {

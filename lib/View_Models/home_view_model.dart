@@ -1,9 +1,12 @@
+import 'package:drosq8/View_Models/adan/adan_view_model.dart';
 import 'package:drosq8/View_Models/categories/categories_view_model.dart';
 import 'package:drosq8/View_Models/content/content_view_model.dart';
 import 'package:drosq8/View_Models/subcategories/sub_view_model.dart';
+import 'package:drosq8/data/adan_api.dart';
 import 'package:drosq8/data/categories_api.dart';
 import 'package:drosq8/data/content_api.dart';
 import 'package:drosq8/data/subcategories_api.dart';
+import 'package:drosq8/models/adan_model.dart';
 import 'package:drosq8/models/categories_model.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +18,7 @@ class HomeViewModel extends ChangeNotifier {
   List<String> listId = [];
   List<String> listLinkAudio = [];
   String listLink = "";
+  AdhanViewModel? adhanData;
 
 //Categories list
   Future<void> fetchCategories() async {
@@ -29,12 +33,11 @@ class HomeViewModel extends ChangeNotifier {
 
   //SubCategories List
   Future<void> fetchSubCategories(String catid) async {
-    print('=========1=========');
     List jsonMap = await SubCategoriesApi(catId: catid).loadSubCat();
-    print('=========2=========');
+
     listSubCateg =
         jsonMap.map((e) => SubCategoriesViewModel(subcategories: e)).toList();
-    print('=========3=========');
+
     notifyListeners();
   }
 
@@ -76,5 +79,16 @@ class HomeViewModel extends ChangeNotifier {
     print(listId);
     print(listLinkAudio);
     notifyListeners();
+  }
+
+  //Adhan Data
+  Future<void> fetchAdhan() async {
+    print('================= viewModel');
+
+    AdhanModel jsonAdhan = await AdanApi().fetchAdan();
+    adhanData = AdhanViewModel(adhanModel: jsonAdhan);
+
+    notifyListeners();
+    print(adhanData);
   }
 }
