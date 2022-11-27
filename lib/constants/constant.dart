@@ -10,6 +10,12 @@ class ConstantManager {
   //links
   static String url = 'https://www.salemalajmi.com/main';
 
+  //adan info
+  static String adanLink =
+      'http://api.aladhan.com/v1/timingsByAddress?address=';
+
+  static String adress = 'kuwait';
+
   //Colors
 
   static Color mainColor = const Color(0xFF1C76B4);
