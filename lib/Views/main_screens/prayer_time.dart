@@ -1,4 +1,5 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
+import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class PrayerTime extends StatefulWidget {
@@ -47,10 +48,10 @@ class _PrayerTimeState extends State<PrayerTime> {
       return Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.12,
+            height: MediaQuery.of(context).size.height * 0.14,
             width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              color: Colors.black,
+            decoration: BoxDecoration(
+              color: ConstantManager.mainColor,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -95,7 +96,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                   child: Text(
                     hvm.adhanData!.date!,
                     style: const TextStyle(
-                      fontSize: 28,
+                      fontSize: 25,
                       color: Colors.white,
                     ),
                   ),
@@ -114,7 +115,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                   padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
+                    color: const Color.fromARGB(255, 214, 214, 214),
                     border: Border.all(
                       width: 1,
                       color: Colors.white,
