@@ -94,7 +94,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                 ),
                 Center(
                   child: Text(
-                    hvm.adhanData!.date!,
+                    '${hvm.adhanData!.dayNumber} - ${hvm.adhanData!.monthNumber} - ${hvm.adhanData!.year} ',
                     style: const TextStyle(
                       fontSize: 25,
                       color: Colors.white,

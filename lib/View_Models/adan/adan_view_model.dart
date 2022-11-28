@@ -8,6 +8,10 @@ class AdhanViewModel {
     return _adhanModel.data!.date!.hijri!.month!.ar!;
   }
 
+  int? get monthNumber {
+    return _adhanModel.data!.date!.hijri!.month!.number!;
+  }
+
   String? get dayName {
     return _adhanModel.data!.date!.hijri!.weekday!.ar!;
   }

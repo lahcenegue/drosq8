@@ -1,4 +1,4 @@
-import 'package:drosq8/Views/home_screen.dart';
+import 'package:drosq8/Views/main_screens/home_screen.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
