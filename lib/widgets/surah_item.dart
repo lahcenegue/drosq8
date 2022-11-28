@@ -69,8 +69,8 @@ class SurahItem extends StatelessWidget {
                       Text(
                         name,
                         style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.white,
+                          fontSize: 14,
+                          color: Colors.black,
                         ),
                       ),
                     ],
@@ -79,7 +79,7 @@ class SurahItem extends StatelessWidget {
               ),
             ),
             const Divider(
-              color: Colors.white70,
+              color: Colors.black,
             )
           ],
         ),

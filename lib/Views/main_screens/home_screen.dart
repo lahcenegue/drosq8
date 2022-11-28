@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final CategoriesApi categoriesApi = CategoriesApi();
 
-  int index = 1;
+  int index = 2;
 
   final screens = const [
     CategoriesList(),

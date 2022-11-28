@@ -1,3 +1,4 @@
+import 'package:drosq8/widgets/surah_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,14 +13,23 @@ class _QuranScreenState extends State<QuranScreen> {
   var surahsNames = [];
   var surahsVerses = [];
   @override
+  void initState() {
+    getSurahContent();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
         padding: const EdgeInsets.only(top: 15.0),
         shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return Container();
-        },
+        itemCount: surahsNames.length,
+        itemBuilder: (context, index) => SurahItem(
+          fileNumber: index + 1,
+          name: surahsNames.elementAt(index),
+          verse: surahsVerses.elementAt(index),
+        ),
       ),
     );
   }
