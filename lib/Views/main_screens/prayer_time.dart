@@ -12,7 +12,6 @@ class PrayerTime extends StatefulWidget {
 class _PrayerTimeState extends State<PrayerTime> {
   HomeViewModel hvm = HomeViewModel();
   List<String> names = [
-    'الامساك',
     'الفجر',
     'الشروق',
     'الظهر',
@@ -41,7 +40,6 @@ class _PrayerTimeState extends State<PrayerTime> {
       );
     } else {
       List<String> times = [
-        hvm.adhanData!.imsak!,
         hvm.adhanData!.fajr!,
         hvm.adhanData!.sunrise!,
         hvm.adhanData!.dhuhr!,
@@ -52,7 +50,7 @@ class _PrayerTimeState extends State<PrayerTime> {
       return Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.14,
+            height: MediaQuery.of(context).size.height * 0.12,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: ConstantManager.mainColor,
@@ -63,7 +61,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         hvm.adhanData!.dayName!,

@@ -23,6 +23,7 @@ class ConstantManager {
   static Color gradient1 = const Color(0xFF3283bb);
   static Color gradient2 = const Color(0xFFd1e3f0);
   static Color quranColor = const Color(0xFF0ec683);
+  static Color ayahColor = const Color.fromARGB(255, 0, 0, 0);
 
   // categories
 

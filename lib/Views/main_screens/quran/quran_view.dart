@@ -44,12 +44,12 @@ class _QuranViewState extends State<QuranView> {
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
                   SizedBox(
-                    height: 35,
+                    height: 40,
                     child: Image.asset(
                       "assets/images/img_bismillah.png",
-                      color: ConstantManager.quranColor,
+                      color: ConstantManager.ayahColor,
                     ),
                   ),
                   const SizedBox(height: 00),
@@ -64,7 +64,7 @@ class _QuranViewState extends State<QuranView> {
                         style: TextStyle(
                           fontFamily: "quranFont",
                           fontSize: 22,
-                          color: ConstantManager.quranColor,
+                          color: ConstantManager.ayahColor,
                         ),
                       ),
                     ),
