@@ -53,26 +53,22 @@ class _QuranViewState extends State<QuranView> {
                     ),
                   ),
                   const SizedBox(height: 00),
-                  ListView.builder(
-                      padding: const EdgeInsets.all(20.0),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 1,
-                      itemBuilder: (context, index) {
-                        return Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: Text(
-                            surahText,
-                            textScaleFactor: 1.3,
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              fontFamily: "quranFont",
-                              fontSize: 24,
-                              color: ConstantManager.quranColor,
-                            ),
-                          ),
-                        );
-                      }),
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Text(
+                        surahText,
+                        textScaleFactor: 1.3,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontFamily: "quranFont",
+                          fontSize: 22,
+                          color: ConstantManager.quranColor,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -87,7 +83,7 @@ class _QuranViewState extends State<QuranView> {
     ayah = data.split("\n");
     for (var line in ayah) {
       surahText += line;
-      surahText += "(${ayahNum.toString()}) ";
+      surahText += "(${ayahNum.toString()})";
       ayahNum++;
     }
 
