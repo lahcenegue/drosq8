@@ -8,7 +8,7 @@ class ConstantManager {
   static String book = 'assets/images/book.png';
 
   //links
-  static String url = 'https://www.salemalajmi.com/main';
+  static String url = 'https://www.drosq8.com';
 
   //adan info
   static String adanLink =
@@ -27,6 +27,6 @@ class ConstantManager {
 
   // categories
 
-  static String booksId = '9';
-  static String audiosId = '6';
+  static String booksId = '260';
+  static String audiosId = '218';
 }

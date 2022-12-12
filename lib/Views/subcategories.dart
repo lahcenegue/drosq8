@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class SubCategories extends StatefulWidget {
   final String catId;
   final String name;
+  final String type;
 
   const SubCategories({
     Key? key,
     required this.name,
     required this.catId,
+    required this.type,
   }) : super(key: key);
 
   @override

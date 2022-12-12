@@ -56,6 +56,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                           builder: (context) => SubCategories(
                                 catId: hvm.listSubCateg![index].id,
                                 name: hvm.listSubCateg![index].name,
+                                type: hvm.listCateg![index].type,
                               )),
                     );
                   },

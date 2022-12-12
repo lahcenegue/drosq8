@@ -63,6 +63,7 @@ class _CategoriesListState extends State<CategoriesList> {
                             builder: (context) => SubCategories(
                                   catId: hvm.listCateg![index].id,
                                   name: hvm.listCateg![index].name,
+                                  type: hvm.listCateg![index].type,
                                 )),
                       );
                     },
