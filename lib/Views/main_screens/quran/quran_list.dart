@@ -21,14 +21,17 @@ class _QuranListState extends State<QuranList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        padding: const EdgeInsets.only(top: 15.0),
-        shrinkWrap: true,
-        itemCount: surahsNames.length,
-        itemBuilder: (context, index) => SurahItem(
-          fileNumber: index + 1,
-          name: surahsNames.elementAt(index),
-          verse: surahsVerses.elementAt(index),
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 60),
+        child: ListView.builder(
+          padding: const EdgeInsets.only(top: 15.0),
+          shrinkWrap: true,
+          itemCount: surahsNames.length,
+          itemBuilder: (context, index) => SurahItem(
+            fileNumber: index + 1,
+            name: surahsNames.elementAt(index),
+            verse: surahsVerses.elementAt(index),
+          ),
         ),
       ),
     );

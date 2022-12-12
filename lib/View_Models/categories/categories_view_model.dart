@@ -17,4 +17,8 @@ class CategoriesViewModel {
   String get cat {
     return _categories.category;
   }
+
+  String get type {
+    return _categories.type;
+  }
 }

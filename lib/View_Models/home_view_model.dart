@@ -76,19 +76,15 @@ class HomeViewModel extends ChangeNotifier {
       // print('--------------------test----------------');
       // print(listSubCateg![i].id);
     }
-    print(listId);
-    print(listLinkAudio);
+
     notifyListeners();
   }
 
   //Adhan Data
   Future<void> fetchAdhan() async {
-    print('================= viewModel');
-
     AdhanModel jsonAdhan = await AdanApi().fetchAdan();
     adhanData = AdhanViewModel(adhanModel: jsonAdhan);
 
     notifyListeners();
-    print(adhanData);
   }
 }

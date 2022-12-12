@@ -13,6 +13,8 @@ class QiblahCompassWidget extends StatelessWidget {
     alignment: Alignment.center,
   );
 
+  QiblahCompassWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(

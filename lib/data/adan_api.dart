@@ -6,14 +6,11 @@ import 'package:drosq8/models/adan_model.dart';
 
 class AdanApi {
   Future<AdhanModel> fetchAdan() async {
-    print('===========api');
-    print('===========1');
     try {
       var url = Uri.parse(ConstantManager.adanLink + ConstantManager.adress);
-      print(url);
+
       http.Response response = await http.get(url);
-      print('===========2');
-      print(response.statusCode);
+
       if (response.statusCode == 200) {
         var data = convert.jsonDecode(response.body);
         AdhanModel adan = AdhanModel.fromJson(data);
