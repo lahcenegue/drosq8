@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 class VideoMatter extends StatelessWidget {
   final List<dynamic> hvm;
+  //final String link;
 
   const VideoMatter({
     super.key,
     required this.hvm,
+    //required this.link,
   });
 
   @override
@@ -21,16 +23,18 @@ class VideoMatter extends StatelessWidget {
         ),
         itemCount: hvm.length,
         itemBuilder: (buildContext, index) {
+          print('===========');
+          print(hvm[index].id);
           return GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //       builder: (context) => YoutubeViewer(
-              //             name: hvm[index].name,
-              //             link: hvm[index].listLink,
-              //           )),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => GetVideoLink(
+                          name: hvm[index].name,
+                          catId: hvm[index].id,
+                        )),
+              );
             },
             child: Container(
               padding: const EdgeInsets.all(5),

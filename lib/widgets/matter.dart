@@ -23,6 +23,7 @@ class _MatterViewState extends State<MatterView> {
   void initState() {
     super.initState();
     hvm.fetchMatter(widget.catId);
+    // hvm.fetchLink(widget.catId);
   }
 
   @override
@@ -47,10 +48,14 @@ class _MatterViewState extends State<MatterView> {
       } else if (widget.type == 'video') {
         return VideoMatter(
           hvm: hvm.listMatter!,
+          //link: hvm.listLink,
         );
       } else {
         return const Center(
-          child: Text('test'),
+          child: Text(
+            'قريبا...',
+            style: TextStyle(fontSize: 32),
+          ),
         );
       }
     }

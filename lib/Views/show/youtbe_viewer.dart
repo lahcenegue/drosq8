@@ -1,5 +1,41 @@
+import 'package:drosq8/View_Models/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+class GetVideoLink extends StatefulWidget {
+  final String catId;
+  final String name;
+  const GetVideoLink({
+    super.key,
+    required this.catId,
+    required this.name,
+  });
+
+  @override
+  State<GetVideoLink> createState() => _GetVideoLinkState();
+}
+
+class _GetVideoLinkState extends State<GetVideoLink> {
+  HomeViewModel hvm = HomeViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    hvm.fetchLink(widget.catId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    hvm.addListener(() {
+      setState(() {});
+    });
+    return Scaffold(
+        body: YoutubeViewer(
+      link: hvm.listLink,
+      name: widget.name,
+    ));
+  }
+}
 
 class YoutubeViewer extends StatefulWidget {
   // final String catId;
