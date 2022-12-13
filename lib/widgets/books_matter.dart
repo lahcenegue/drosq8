@@ -1,4 +1,4 @@
-import 'package:drosq8/Views/show/data_show.dart';
+import 'package:drosq8/Views/show/pdf_viewer.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class BooksMatter extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => DataShow(
+                  builder: (context) => PDFShow(
                         catId: hvm[index].id,
                         name: hvm[index].name,
                       )),

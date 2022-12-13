@@ -111,7 +111,7 @@ class _Mp3PlayerState extends State<Mp3Player> {
                     ),
                     child: Center(
                       child: Image.asset(
-                        'asstes/images/music.png',
+                        'assets/images/music.png',
                         color: Colors.grey,
                         height: 90,
                       ),
