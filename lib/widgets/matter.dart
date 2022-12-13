@@ -1,7 +1,8 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
-import 'package:drosq8/widgets/books_matter.dart';
-import 'package:drosq8/widgets/sound_matter.dart';
-import 'package:drosq8/widgets/video_matter.dart';
+import 'package:drosq8/widgets/matter/article_matter.dart';
+import 'package:drosq8/widgets/matter/books_matter.dart';
+import 'package:drosq8/widgets/matter/sound_matter.dart';
+import 'package:drosq8/widgets/matter/video_matter.dart';
 import 'package:flutter/material.dart';
 
 class MatterView extends StatefulWidget {
@@ -48,7 +49,10 @@ class _MatterViewState extends State<MatterView> {
       } else if (widget.type == 'video') {
         return VideoMatter(
           hvm: hvm.listMatter!,
-          //link: hvm.listLink,
+        );
+      } else if (widget.type == 'article') {
+        return ArticleMatter(
+          hvm: hvm.listMatter!,
         );
       } else {
         return const Center(
