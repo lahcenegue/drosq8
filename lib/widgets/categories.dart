@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class CategoriesView extends StatefulWidget {
   final String catId;
+  final String type;
   const CategoriesView({
     super.key,
     required this.catId,
+    required this.type,
   });
 
   @override
@@ -56,7 +58,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                           builder: (context) => SubCategories(
                                 catId: hvm.listSubCateg![index].id,
                                 name: hvm.listSubCateg![index].name,
-                                type: hvm.listCateg![index].type,
+                                type: widget.type,
                               )),
                     );
                   },

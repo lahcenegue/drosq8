@@ -74,6 +74,7 @@ class _SubCategoriesState extends State<SubCategories> {
                             //الاقسام
                             CategoriesView(
                               catId: widget.catId,
+                              type: widget.type,
                             ),
                           ])
                         : TabBarView(
@@ -81,6 +82,7 @@ class _SubCategoriesState extends State<SubCategories> {
                               //الاقسام
                               CategoriesView(
                                 catId: widget.catId,
+                                type: widget.type,
                               ),
 
                               // المواد
