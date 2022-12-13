@@ -66,6 +66,7 @@ class _SubCategoriesState extends State<SubCategories> {
                         // المواد
                         MatterView(
                           catId: widget.catId,
+                          type: widget.type,
                         ),
                       ])
                     : hvm.listMatter!.isEmpty
@@ -85,6 +86,7 @@ class _SubCategoriesState extends State<SubCategories> {
                               // المواد
                               MatterView(
                                 catId: widget.catId,
+                                type: widget.type,
                               ),
                             ],
                           ),
