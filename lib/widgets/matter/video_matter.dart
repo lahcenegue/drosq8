@@ -23,8 +23,6 @@ class VideoMatter extends StatelessWidget {
         ),
         itemCount: hvm.length,
         itemBuilder: (buildContext, index) {
-          print('===========');
-          print(hvm[index].id);
           return GestureDetector(
             onTap: () {
               Navigator.push(

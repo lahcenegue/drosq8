@@ -65,6 +65,7 @@ class _SubCategoriesState extends State<SubCategories> {
                 ? TabBarView(children: [
                     // المواد
                     MatterView(
+                      catName: widget.name,
                       catId: widget.catId,
                       type: widget.type,
                     ),
@@ -88,6 +89,7 @@ class _SubCategoriesState extends State<SubCategories> {
                           // المواد
                           MatterView(
                             catId: widget.catId,
+                            catName: widget.name,
                             type: widget.type,
                           ),
                         ],

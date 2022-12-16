@@ -70,13 +70,17 @@ class _BooksShowState extends State<BooksShow> {
                       children: [
                         // image
 
-                        hvm.listMatter![index].image == ""
+                        hvm.listMatter![index].image.isEmpty ||
+                                hvm.listMatter![index].image
+                                    .contains('upload/upload/')
                             ? Image.asset(
                                 ConstantManager.book,
                                 height: 150,
                               )
                             : Image.network(
-                                '${ConstantManager.url}/${hvm.listMatter![index].image}',
+                                hvm.listMatter![index].image.contains('http')
+                                    ? hvm.listMatter![index].image
+                                    : '${ConstantManager.url}/${hvm.listMatter![index].image}',
                                 height: 150,
                               ),
 

@@ -1,5 +1,6 @@
-import 'package:drosq8/widgets/books_show.dart';
+import 'package:drosq8/Views/subcategories.dart';
 import 'package:drosq8/constants/constant.dart';
+import 'package:drosq8/widgets/books_show.dart';
 import 'package:drosq8/widgets/separation.dart';
 import 'package:flutter/material.dart';
 
@@ -21,16 +22,23 @@ class MainScreen extends StatelessWidget {
             ),
             Separation(
               title: 'الكتب الإلكترونية',
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SubCategories(
+                          catId: ConstantManager.booksId,
+                          name: "كتب الكترونية",
+                          type: "book",
+                        )));
+              },
             ),
-            //const BooksShow(),
+            const BooksShow(),
             const SizedBox(height: 10),
-            Separation(
-              title: 'الصوتيات',
-              onTap: () {},
-            ),
-            const SizedBox(height: 10),
-            // const AudioShow(),
+            // Separation(
+            //   title: 'الصوتيات',
+            //   onTap: () {},
+            // ),
+            // const SizedBox(height: 10),
+            // // const AudioShow(),
           ],
         ),
       )),

@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 class MatterView extends StatefulWidget {
   final String catId;
   final String type;
+  final String catName;
   const MatterView({
     super.key,
     required this.catId,
     required this.type,
+    required this.catName,
   });
 
   @override
@@ -49,7 +51,8 @@ class _MatterViewState extends State<MatterView> {
         return VideoMatter(
           hvm: hvm.listMatter!,
         );
-      } else if (widget.type == 'article') {
+      } else if (widget.type == 'article' ||
+          widget.catName == "ادعــيــة واذكـــــار") {
         return ArticleMatter(
           hvm: hvm.listMatter!,
         );

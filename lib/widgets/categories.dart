@@ -28,42 +28,48 @@ class _CategoriesViewState extends State<CategoriesView> {
     hvm.addListener(() {
       setState(() {});
     });
-    return hvm.listSubCateg == null
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : ListView.builder(
-            itemCount: hvm.listSubCateg!.length,
-            itemBuilder: (buildContext, index) {
-              return Container(
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.7),
-                      offset: const Offset(3, 4),
-                      blurRadius: 5,
-                    ),
-                  ],
+
+    if (hvm.listSubCateg == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else {
+      return ListView.builder(
+        itemCount: hvm.listSubCateg!.length,
+        itemBuilder: (buildContext, index) {
+          return Container(
+            margin: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(width: 1, color: Colors.grey),
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.7),
+                  offset: const Offset(3, 4),
+                  blurRadius: 5,
                 ),
-                child: ListTile(
-                  title: Text(hvm.listSubCateg![index].name),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SubCategories(
-                                catId: hvm.listSubCateg![index].id,
-                                name: hvm.listSubCateg![index].name,
-                                type: widget.type,
-                              )),
-                    );
-                  },
-                ),
-              );
-            });
+              ],
+            ),
+            child: ListTile(
+              title: Text(hvm.listSubCateg![index].name),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SubCategories(
+                            catId: hvm.listSubCateg![index].id,
+                            name: hvm.listSubCateg![index].name,
+                            type: widget.type,
+                          )),
+                );
+              },
+            ),
+          );
+        },
+      );
+    }
   }
 }
