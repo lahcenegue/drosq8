@@ -94,7 +94,7 @@ class HomeViewModel extends ChangeNotifier {
 
   //content data
   Future<void> fetchContentData(String catId) async {
-    ContentModel jsonContent = await ContentApi2(catId: catId).fetchContent();
+    ContentModel jsonContent = await ContentApi(catId: catId).fetchContent();
     contentData = ContentViewModel(contentModel: jsonContent);
 
     notifyListeners();
