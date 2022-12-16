@@ -30,38 +30,46 @@ class _ArticleShowState extends State<ArticleShow> {
       setState(() {});
     });
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
+    if (hvm.contentData == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
         ),
-        body: hvm.contentData == null
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView(
-                padding: const EdgeInsets.all(20),
-                children: [
-                  const SizedBox(height: 20),
-                  Center(
-                    child: FittedBox(
-                      child: Text(
-                        hvm.contentData!.name,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+      );
+    } else {
+      return Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.title),
+          ),
+          body: hvm.contentData == null
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : ListView(
+                  padding: const EdgeInsets.all(20),
+                  children: [
+                    const SizedBox(height: 20),
+                    Center(
+                      child: FittedBox(
+                        child: Text(
+                          hvm.contentData!.name,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Html(
-                    data: hvm.contentData!.comment,
-                    style: {},
-                  ),
-                ],
-              ),
-      ),
-    );
+                    Html(
+                      data: hvm.contentData!.comment,
+                      style: {},
+                    ),
+                  ],
+                ),
+        ),
+      );
+    }
   }
 }

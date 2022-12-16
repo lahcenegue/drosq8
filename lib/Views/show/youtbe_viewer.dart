@@ -21,7 +21,7 @@ class _GetVideoLinkState extends State<GetVideoLink> {
   @override
   void initState() {
     super.initState();
-    hvm.fetchLink(widget.catId);
+    hvm.fetchContentData(widget.catId);
   }
 
   @override
@@ -29,11 +29,19 @@ class _GetVideoLinkState extends State<GetVideoLink> {
     hvm.addListener(() {
       setState(() {});
     });
-    return Scaffold(
-        body: YoutubeViewer(
-      link: hvm.listLink,
-      name: widget.name,
-    ));
+    if (hvm.contentData == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else {
+      return Scaffold(
+          body: YoutubeViewer(
+        link: hvm.contentData!.link,
+        name: widget.name,
+      ));
+    }
   }
 }
 

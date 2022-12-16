@@ -21,7 +21,8 @@ class _PDFShowState extends State<PDFShow> {
   @override
   void initState() {
     super.initState();
-    hvm.fetchLink(widget.catId);
+    //hvm.fetchLink(widget.catId);
+    hvm.fetchContentData(widget.catId);
   }
 
   @override
@@ -30,22 +31,30 @@ class _PDFShowState extends State<PDFShow> {
       setState(() {});
     });
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.name),
+    if (hvm.contentData == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
         ),
-        body: hvm.listLink.contains('https://')
-            ? SfPdfViewer.network(
-                hvm.listLink,
-                key: _pdfViewerKey,
-              )
-            : SfPdfViewer.network(
-                'https://www.drosq8.com/${hvm.listLink}',
-                key: _pdfViewerKey,
-              ),
-      ),
-    );
+      );
+    } else {
+      return Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.name),
+          ),
+          body: hvm.contentData!.link.contains('https://')
+              ? SfPdfViewer.network(
+                  hvm.contentData!.link,
+                  key: _pdfViewerKey,
+                )
+              : SfPdfViewer.network(
+                  'https://www.drosq8.com/${hvm.contentData!.link}',
+                  key: _pdfViewerKey,
+                ),
+        ),
+      );
+    }
   }
 }

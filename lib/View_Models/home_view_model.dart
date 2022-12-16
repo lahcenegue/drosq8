@@ -18,8 +18,8 @@ class HomeViewModel extends ChangeNotifier {
   List<MatterViewModel>? listMatter;
   List<String> listId = [];
   //List<String> listLinkAudio = [];
-  String listLink = "";
-  String? comment;
+  //String listLink = "";
+
   AdhanViewModel? adhanData;
   ContentViewModel? contentData;
 
@@ -53,17 +53,17 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //Contents
-  Future<void> fetchLink(String catid) async {
-    List jsonContent = await ContentApi(catId: catid).loadLink();
+  // //Contents
+  // Future<void> fetchLink(String catid) async {
+  //   List jsonContent = await ContentApi(catId: catid).loadLink();
 
-    List listLink2 =
-        jsonContent.map((e) => LinkViewModel(linkModel: e)).toList();
-    listLink = listLink2[0].link;
-    comment = listLink2[0].comm;
+  //   List listLink2 =
+  //       jsonContent.map((e) => LinkViewModel(linkModel: e)).toList();
+  //   listLink = listLink2[0].link;
+  //   comment = listLink2[0].comm;
 
-    notifyListeners();
-  }
+  //   notifyListeners();
+  // }
 
   //list audio
   Future<void> fetchListAudio(String catid) async {

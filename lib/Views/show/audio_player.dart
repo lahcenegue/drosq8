@@ -23,7 +23,8 @@ class _Mp3PlayerState extends State<Mp3Player> {
   @override
   void initState() {
     super.initState();
-    hvm.fetchLink(widget.catId);
+    //hvm.fetchLink(widget.catId);
+    hvm.fetchContentData(widget.catId);
 
     audioPlayer.onPlayerStateChanged.listen((state) {
       setState(() {
@@ -162,8 +163,8 @@ class _Mp3PlayerState extends State<Mp3Player> {
                           if (isPlaying) {
                             await audioPlayer.pause();
                           } else {
-                            await audioPlayer
-                                .play('https://www.drosq8.com/${hvm.listLink}');
+                            await audioPlayer.play(
+                                'https://www.drosq8.com/${hvm.contentData!.link}');
                           }
                         },
                       ),
