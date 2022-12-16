@@ -34,4 +34,8 @@ class MatterViewModel {
   String get image {
     return _matterModel.image;
   }
+
+  String get comm {
+    return _matterModel.comm;
+  }
 }

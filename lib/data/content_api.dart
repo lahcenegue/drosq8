@@ -29,3 +29,27 @@ class ContentApi {
     return [];
   }
 }
+
+class ContentApi2 {
+  String catId;
+  ContentApi2({
+    required this.catId,
+  });
+
+  Future<ContentModel> fetchContent() async {
+    try {
+      var url = Uri.parse('${ConstantManager.url}/api/play/$catId');
+
+      http.Response response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        var data = convert.jsonDecode(response.body);
+        ContentModel content = ContentModel.fromJson(data);
+        return content;
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+    return ContentModel();
+  }
+}

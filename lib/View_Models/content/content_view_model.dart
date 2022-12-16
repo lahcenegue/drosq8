@@ -9,7 +9,34 @@ class LinkViewModel {
     return _linkModel.id;
   }
 
+  String get comm {
+    return _linkModel.comm;
+  }
+
   String get link {
     return _linkModel.link;
+  }
+}
+
+class ContentViewModel {
+  final ContentModel _contentModel;
+
+  ContentViewModel({required ContentModel contentModel})
+      : _contentModel = contentModel;
+
+  String get id {
+    return _contentModel.id!;
+  }
+
+  String get name {
+    return _contentModel.name!;
+  }
+
+  String get comment {
+    return _contentModel.comment!;
+  }
+
+  String get link {
+    return _contentModel.likaty!.first.link!;
   }
 }

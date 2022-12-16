@@ -24,7 +24,6 @@ class _MatterViewState extends State<MatterView> {
   void initState() {
     super.initState();
     hvm.fetchMatter(widget.catId);
-    // hvm.fetchLink(widget.catId);
   }
 
   @override
