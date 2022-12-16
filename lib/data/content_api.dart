@@ -3,9 +3,9 @@ import 'package:drosq8/models/content_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-class ContentApi2 {
+class ContentApi {
   String catId;
-  ContentApi2({
+  ContentApi({
     required this.catId,
   });
 
