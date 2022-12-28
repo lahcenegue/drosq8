@@ -37,7 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text(ConstantManager.name),
           actions: const [
-            Icon(Icons.gps_fixed),
+            Icon(
+              Icons.info_outline,
+              size: 36,
+            ),
+            SizedBox(width: 20),
           ],
         ),
         bottomNavigationBar: CurvedNavigationBar(

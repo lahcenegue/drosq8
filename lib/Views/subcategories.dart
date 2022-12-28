@@ -34,69 +34,75 @@ class _SubCategoriesState extends State<SubCategories> {
       setState(() {});
     });
 
-    if (hvm.listSubCateg == null || hvm.listMatter == null) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    } else {
-      return Directionality(
-        textDirection: TextDirection.rtl,
-        child: DefaultTabController(
-          length: hvm.listSubCateg!.isEmpty || hvm.listMatter!.isEmpty ? 1 : 2,
-          child: Scaffold(
-            appBar: AppBar(
-              title: Text(widget.name),
-              bottom: hvm.listSubCateg!.isEmpty
-                  ? const TabBar(tabs: [
-                      Tab(text: 'المواد'),
-                    ])
-                  : hvm.listMatter!.isEmpty
-                      ? const TabBar(tabs: [
-                          Tab(text: 'الأقسام'),
-                        ])
-                      : const TabBar(tabs: [
-                          Tab(text: 'الأقسام'),
-                          Tab(text: 'المواد'),
-                        ]),
+    return hvm.listSubCateg == null
+        ? const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-            body: hvm.listSubCateg!.isEmpty
-                ? TabBarView(children: [
-                    // المواد
-                    MatterView(
-                      catName: widget.name,
-                      catId: widget.catId,
-                      type: widget.type,
+          )
+        : hvm.listMatter == null
+            ? const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
+            : Directionality(
+                textDirection: TextDirection.rtl,
+                child: DefaultTabController(
+                  length: hvm.listSubCateg!.isEmpty || hvm.listMatter!.isEmpty
+                      ? 1
+                      : 2,
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: Text(widget.name),
+                      bottom: hvm.listSubCateg!.isEmpty
+                          ? const TabBar(tabs: [
+                              Tab(text: 'المواد'),
+                            ])
+                          : hvm.listMatter!.isEmpty
+                              ? const TabBar(tabs: [
+                                  Tab(text: 'الأقسام'),
+                                ])
+                              : const TabBar(tabs: [
+                                  Tab(text: 'الأقسام'),
+                                  Tab(text: 'المواد'),
+                                ]),
                     ),
-                  ])
-                : hvm.listMatter!.isEmpty
-                    ? TabBarView(children: [
-                        //الاقسام
-                        CategoriesView(
-                          catId: widget.catId,
-                          type: widget.type,
-                        ),
-                      ])
-                    : TabBarView(
-                        children: [
-                          //الاقسام
-                          CategoriesView(
-                            catId: widget.catId,
-                            type: widget.type,
-                          ),
+                    body: hvm.listSubCateg!.isEmpty
+                        ? TabBarView(children: [
+                            // المواد
+                            MatterView(
+                              catName: widget.name,
+                              catId: widget.catId,
+                              type: widget.type,
+                            ),
+                          ])
+                        : hvm.listMatter!.isEmpty
+                            ? TabBarView(children: [
+                                //الاقسام
+                                CategoriesView(
+                                  catId: widget.catId,
+                                  type: widget.type,
+                                ),
+                              ])
+                            : TabBarView(
+                                children: [
+                                  //الاقسام
+                                  CategoriesView(
+                                    catId: widget.catId,
+                                    type: widget.type,
+                                  ),
 
-                          // المواد
-                          MatterView(
-                            catId: widget.catId,
-                            catName: widget.name,
-                            type: widget.type,
-                          ),
-                        ],
-                      ),
-          ),
-        ),
-      );
-    }
+                                  // المواد
+                                  MatterView(
+                                    catId: widget.catId,
+                                    catName: widget.name,
+                                    type: widget.type,
+                                  ),
+                                ],
+                              ),
+                  ),
+                ),
+              );
   }
 }

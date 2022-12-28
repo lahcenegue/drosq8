@@ -51,8 +51,7 @@ class _MatterViewState extends State<MatterView> {
         return VideoMatter(
           hvm: hvm.listMatter!,
         );
-      } else if (widget.type == 'article' ||
-          widget.catName == "ادعــيــة واذكـــــار") {
+      } else if (widget.type == 'article') {
         return ArticleMatter(
           hvm: hvm.listMatter!,
         );
