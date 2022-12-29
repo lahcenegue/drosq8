@@ -16,11 +16,19 @@ class CategoriesView extends StatefulWidget {
 }
 
 class _CategoriesViewState extends State<CategoriesView> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
   HomeViewModel hvm = HomeViewModel();
   @override
   void initState() {
     super.initState();
     hvm.fetchSubCategories(widget.catId);
+  }
+
+  Future refreshData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    hvm.fetchSubCategories(widget.catId);
+    setState(() {});
   }
 
   @override
@@ -33,39 +41,43 @@ class _CategoriesViewState extends State<CategoriesView> {
         ? const Center(
             child: CircularProgressIndicator(),
           )
-        : ListView.builder(
-            itemCount: hvm.listSubCateg!.length,
-            itemBuilder: (buildContext, index) {
-              return Container(
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.7),
-                      offset: const Offset(3, 4),
-                      blurRadius: 5,
-                    ),
-                  ],
-                ),
-                child: ListTile(
-                  title: Text(hvm.listSubCateg![index].name),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SubCategories(
-                                catId: hvm.listSubCateg![index].id,
-                                name: hvm.listSubCateg![index].name,
-                                type: widget.type,
-                              )),
-                    );
-                  },
-                ),
-              );
-            },
+        : RefreshIndicator(
+            key: _refreshIndicatorKey,
+            onRefresh: refreshData,
+            child: ListView.builder(
+              itemCount: hvm.listSubCateg!.length,
+              itemBuilder: (buildContext, index) {
+                return Container(
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(width: 1, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.7),
+                        offset: const Offset(3, 4),
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                  child: ListTile(
+                    title: Text(hvm.listSubCateg![index].name),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SubCategories(
+                                  catId: hvm.listSubCateg![index].id,
+                                  name: hvm.listSubCateg![index].name,
+                                  type: widget.type,
+                                )),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
           );
   }
 }
