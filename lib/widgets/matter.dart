@@ -21,11 +21,19 @@ class MatterView extends StatefulWidget {
 }
 
 class _MatterViewState extends State<MatterView> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
   HomeViewModel hvm = HomeViewModel();
   @override
   void initState() {
     super.initState();
     hvm.fetchMatter(widget.catId);
+  }
+
+  Future refreshData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    hvm.fetchMatter(widget.catId);
+    setState(() {});
   }
 
   @override
@@ -40,20 +48,36 @@ class _MatterViewState extends State<MatterView> {
       );
     } else {
       if (widget.type == 'book') {
-        return BooksMatter(
-          hvm: hvm.listMatter!,
+        return RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: refreshData,
+          child: BooksMatter(
+            hvm: hvm.listMatter!,
+          ),
         );
       } else if (widget.type == 'sound') {
-        return SoundMatter(
-          hvm: hvm.listMatter!,
+        return RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: refreshData,
+          child: SoundMatter(
+            hvm: hvm.listMatter!,
+          ),
         );
       } else if (widget.type == 'video') {
-        return VideoMatter(
-          hvm: hvm.listMatter!,
+        return RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: refreshData,
+          child: VideoMatter(
+            hvm: hvm.listMatter!,
+          ),
         );
       } else if (widget.type == 'article') {
-        return ArticleMatter(
-          hvm: hvm.listMatter!,
+        return RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: refreshData,
+          child: ArticleMatter(
+            hvm: hvm.listMatter!,
+          ),
         );
       } else {
         return const Center(
