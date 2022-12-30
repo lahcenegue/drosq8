@@ -28,7 +28,7 @@ class _Mp3PlayerState extends State<Mp3Player> {
 
     audioPlayer.onPlayerStateChanged.listen((state) {
       setState(() {
-        isPlaying = state == PlayerState.PLAYING;
+        isPlaying = state == PlayerState.playing;
       });
     });
 
@@ -38,23 +38,27 @@ class _Mp3PlayerState extends State<Mp3Player> {
       });
     });
 
-    audioPlayer.onAudioPositionChanged.listen((newPosition) {
+    audioPlayer.onPositionChanged.listen((newPosition) {
       setState(() {
         position = newPosition;
       });
     });
   }
 
-  // @override
-  // void dispose() {
-  //   audioPlayer.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     hvm.addListener(() {
-      setState(() {});
+      if (mounted) {
+        setState(() {
+          // Your state change code goes here
+        });
+      }
     });
 
     if (hvm.contentData == null) {
@@ -171,8 +175,10 @@ class _Mp3PlayerState extends State<Mp3Player> {
                             if (isPlaying) {
                               await audioPlayer.pause();
                             } else {
-                              await audioPlayer.play(
-                                  'https://www.drosq8.com/${hvm.contentData!.link}');
+                              await audioPlayer.play(UrlSource(
+                                  'https://www.drosq8.com/${hvm.contentData!.link}'));
+                              // await audioPlayer.play(
+                              //     'https://www.drosq8.com/${hvm.contentData!.link}');
                             }
                           },
                         ),
