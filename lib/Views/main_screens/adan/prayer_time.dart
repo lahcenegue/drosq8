@@ -144,26 +144,42 @@ class _PrayerTimeState extends State<PrayerTime> {
                       ),
                     ),
                   ),
-                  ListView.builder(
-                      padding: const EdgeInsets.only(top: 15, bottom: 100),
-                      itemCount: times.length,
-                      physics: const ScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Text(
-                            names[index],
-                            style: const TextStyle(fontSize: 24),
+                  ListView.separated(
+                    padding: const EdgeInsets.only(top: 15, bottom: 100),
+                    itemCount: times.length,
+                    physics: const ScrollPhysics(),
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 10),
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              names[index],
+                              style: const TextStyle(
+                                fontSize: 24,
+                                color: Color(0xff350d6f),
+                              ),
+                            ),
                           ),
-                          title: Center(
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.5,
                             child: Text(
                               times[index],
                               textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 24),
+                              style: const TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff350d6f),
+                              ),
                             ),
                           ),
-                        );
-                      }),
+                        ],
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
