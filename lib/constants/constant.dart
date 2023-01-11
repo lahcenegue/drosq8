@@ -7,6 +7,9 @@ class ConstantManager {
   static String header = 'assets/images/header.jpg';
   static String book = 'assets/images/book.png';
 
+  //notification
+  static String notification = 'd820edbd-2751-4156-85ed-1cd9b157a439';
+
   //links
   static String url = 'https://www.drosq8.com';
 

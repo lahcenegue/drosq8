@@ -38,6 +38,7 @@ dependencies:
   geolocator: ^9.0.2
   google_fonts: ^3.0.1
   http: ^0.13.5
+  onesignal_flutter: ^3.5.0
   syncfusion_flutter_pdfviewer: ^20.3.47
   youtube_player_flutter: ^8.1.0
 
