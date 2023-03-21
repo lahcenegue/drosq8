@@ -12,7 +12,7 @@ class SubCategoriesApi {
 // SubCategories list
   Future<List<SubCategoriesModel>> loadSubCat() async {
     try {
-      var url = Uri.parse('${ConstantManager.url}/api/cat/$catId');
+      var url = Uri.parse('${ConstantManager.url}/api/cat/$catId/');
 
       http.Response response = await http.get(url);
 
@@ -39,7 +39,7 @@ class SubCategoriesApi {
 
   Future<List<MatterModel>> loadMatter() async {
     try {
-      var url = Uri.parse('${ConstantManager.url}/api/cat/$catId');
+      var url = Uri.parse('${ConstantManager.url}/api/cat/$catId/');
 
       http.Response response = await http.get(url);
 

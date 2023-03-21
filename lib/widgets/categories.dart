@@ -1,6 +1,7 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
 import 'package:drosq8/Views/subcategories.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoriesView extends StatefulWidget {
   final String catId;
@@ -48,11 +49,11 @@ class _CategoriesViewState extends State<CategoriesView> {
               itemCount: hvm.listSubCateg!.length,
               itemBuilder: (buildContext, index) {
                 return Container(
-                  margin: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 25, left: 25, top: 16),
+                  padding: const EdgeInsets.only(right: 27),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(12),
+                    color: const Color(0xffF1F0FD),
+                    borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.7),
@@ -62,7 +63,17 @@ class _CategoriesViewState extends State<CategoriesView> {
                     ],
                   ),
                   child: ListTile(
-                    title: Text(hvm.listSubCateg![index].name),
+                    title: Text(
+                      hvm.listSubCateg![index].name,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.cairo(
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    trailing: const Icon(Icons.arrow_back_ios_new),
                     onTap: () {
                       Navigator.push(
                         context,

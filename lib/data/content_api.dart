@@ -11,7 +11,7 @@ class ContentApi {
 
   Future<ContentModel> fetchContent() async {
     try {
-      var url = Uri.parse('${ConstantManager.url}/api/play/$catId');
+      var url = Uri.parse('${ConstantManager.url}/api/play/$catId/');
 
       http.Response response = await http.get(url);
 

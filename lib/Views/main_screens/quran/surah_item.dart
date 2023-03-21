@@ -1,6 +1,8 @@
 import 'package:drosq8/Views/main_screens/quran/quran_view.dart';
 import 'package:drosq8/constants/constant.dart';
+import 'package:drosq8/data/sura.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SurahItem extends StatelessWidget {
   final String name, verse;
@@ -21,81 +23,61 @@ class SurahItem extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => QuranView(
                 fileNumber: fileNumber,
+                surahName: surah[fileNumber - 1],
               ),
             ));
       },
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width - 10,
-        height: 70,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: ConstantManager.quranColor,
-                          ),
-                          child: Center(
-                            child: Text(
-                              fileNumber.toString(),
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          height: 40,
-                          child: Image.asset(
-                            "assets/sName/sname_$fileNumber.png",
-                            color: ConstantManager.quranColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          verse,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: ConstantManager.quranColor,
-                          ),
-                        ),
-                        Text(
-                          name,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0, right: 34),
+        child: Row(
+          children: [
+            Container(
+              height: 28,
+              width: 28,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(ConstantManager.ayahNum),
                 ),
               ),
-              const Divider(
-                color: Colors.black,
-              )
-            ],
-          ),
+              child: Center(
+                child: Text(fileNumber.toString(),
+                    style: GoogleFonts.cairo(
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )),
+              ),
+            ),
+            const SizedBox(width: 19),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  surah[fileNumber - 1],
+                  style: GoogleFonts.cairo(
+                    textStyle: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                Text(
+                  'عدد الآيات $verse - $name',
+                  style: GoogleFonts.cairo(
+                    textStyle: const TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
   }
-}
+}  
+
+//' --- ',

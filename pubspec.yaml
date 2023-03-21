@@ -29,7 +29,6 @@ environment:
 dependencies:
   audioplayers: ^1.1.1
   cupertino_icons: ^1.0.2
-  curved_navigation_bar: ^1.0.3
   flutter:
     sdk: flutter
   flutter_html: ^2.2.1
@@ -40,6 +39,7 @@ dependencies:
   http: ^0.13.5
   onesignal_flutter: ^3.5.0
   syncfusion_flutter_pdfviewer: ^20.3.47
+  url_launcher: ^6.1.10
   youtube_player_flutter: ^8.1.0
 
 dev_dependencies:
@@ -60,7 +60,6 @@ flutter:
   assets:
     - assets/images/
     - assets/txts/
-    - assets/sName/
     - assets/content/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,8 +1,9 @@
-import 'package:drosq8/Views/main_screens/home_screen.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:flutter/material.dart';
+
+import 'Views/main_screens/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,14 +28,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: ConstantManager.mainColor,
-          titleTextStyle: GoogleFonts.amiri(
+          titleTextStyle: GoogleFonts.cairo(
               textStyle: TextStyle(
             color: ConstantManager.textColor,
             fontSize: 28,
           )),
         ),
       ),
-      home: const HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:drosq8/Views/main_screens/quran/surah_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuranList extends StatefulWidget {
   const QuranList({super.key});
@@ -20,17 +21,48 @@ class _QuranListState extends State<QuranList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 60),
-        child: ListView.builder(
-          padding: const EdgeInsets.only(top: 15.0),
-          shrinkWrap: true,
-          itemCount: surahsNames.length,
-          itemBuilder: (context, index) => SurahItem(
-            fileNumber: index + 1,
-            name: surahsNames.elementAt(index),
-            verse: surahsVerses.elementAt(index),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('القرآن الكريم'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 23, right: 23, top: 17, bottom: 23),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'الفهرس',
+                      style: GoogleFonts.cairo(
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                    )
+                  ],
+                ),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                itemCount: surahsNames.length,
+                itemBuilder: (context, index) => SurahItem(
+                  fileNumber: index + 1,
+                  name: surahsNames.elementAt(index),
+                  verse: surahsVerses.elementAt(index),
+                ),
+              ),
+            ],
           ),
         ),
       ),

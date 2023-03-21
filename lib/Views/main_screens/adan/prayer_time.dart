@@ -13,7 +13,6 @@ class _PrayerTimeState extends State<PrayerTime> {
   HomeViewModel hvm = HomeViewModel();
   List<String> names = [
     'الفجر',
-    'الشروق',
     'الظهر',
     'العصر',
     'المغرب',

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class CategoriesApi {
   Future<List<CategoriesModel>> loadData() async {
     try {
-      var url = Uri.parse('${ConstantManager.url}/api');
+      var url = Uri.parse('${ConstantManager.url}/api/');
       http.Response response = await http.get(url);
 
       if (response.statusCode == 200) {
