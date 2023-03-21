@@ -23,6 +23,14 @@ class ConstantManager {
 
   //notification
   static String notification = 'd820edbd-2751-4156-85ed-1cd9b157a439';
+  static String facebook = 'https://www.facebook.com/DrosQ8/';
+  static String twitter = 'https://twitter.com/drosq8/';
+  static String instagram = 'https://www.instagram.com/drosq8/';
+  static String telegram = 'https://t.me/DrosQ8';
+  static String snapchat = 'https://www.snapchat.com/add/drosq8';
+  static String youtube = 'https://www.youtube.com/@otaibi82';
+
+  //
 
   //links
   static String url = 'http://www.drosq8.com';

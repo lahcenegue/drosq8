@@ -1,5 +1,6 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
 import 'package:drosq8/Views/categories_list.dart';
+import 'package:drosq8/Views/info.dart';
 import 'package:drosq8/Views/main_screens/quran/quran_list.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +78,12 @@ class _MainScreenState extends State<MainScreen> {
                         ],
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const InfoScreen()));
+                          },
                           icon: const Icon(
                             Icons.info_outline,
                             color: Colors.white,
