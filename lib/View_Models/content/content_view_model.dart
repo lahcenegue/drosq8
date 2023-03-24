@@ -37,6 +37,10 @@ class ContentViewModel {
   }
 
   String get link {
-    return _contentModel.likaty!.first.link!;
+    if (_contentModel.likaty!.isEmpty) {
+      return '';
+    } else {
+      return _contentModel.likaty!.first.link!;
+    }
   }
 }

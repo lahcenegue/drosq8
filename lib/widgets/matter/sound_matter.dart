@@ -31,17 +31,18 @@ class SoundMatter extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.only(right: 25, left: 25, top: 16),
             padding: const EdgeInsets.only(left: 10),
-            height: 61,
-            width: 375,
+            height: 60,
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: const Color(0xFFF1F0FD),
               borderRadius: BorderRadius.circular(08),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 61,
-                  width: 61,
+                  height: 60,
+                  width: 60,
                   decoration: const BoxDecoration(
                     color: Color(0xFFDFDCFF),
                     borderRadius: BorderRadius.only(
@@ -54,7 +55,7 @@ class SoundMatter extends StatelessWidget {
                 ),
                 const SizedBox(width: 05),
                 SizedBox(
-                  width: 220,
+                  width: MediaQuery.of(context).size.width * 0.52,
                   child: Text(
                     hvm[index].name,
                     overflow: TextOverflow.ellipsis,

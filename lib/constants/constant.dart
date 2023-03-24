@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 class ConstantManager {
   //String
   static String name = 'دروس الكويت';
+
+  //images
   static String logo = 'assets/images/logo.png';
   static String header = 'assets/images/header.png';
-  static String book = 'assets/images/book.png';
+  static String book = 'assets/images/book.svg';
   static String sound = 'assets/images/sound.png';
   static String soundIcon = 'assets/images/soundIcon.png';
   static String fajer = 'assets/images/fajer.png';
@@ -21,6 +23,12 @@ class ConstantManager {
   static String quiblaIcon = 'assets/images/quiblaIcon.png';
   static String ayahNum = 'assets/images/quranNum.png';
 
+  //qibla
+  static String locationWrong = 'assets/images/wrong_location.svg';
+  static String arrow = 'assets/images/needle.svg';
+  static String compass = 'assets/images/compass.svg';
+  static String kaaba = 'assets/images/kaaba.svg';
+
   //notification
   static String notification = 'd820edbd-2751-4156-85ed-1cd9b157a439';
   static String facebook = 'https://www.facebook.com/DrosQ8/';
@@ -29,8 +37,6 @@ class ConstantManager {
   static String telegram = 'https://t.me/DrosQ8';
   static String snapchat = 'https://www.snapchat.com/add/drosq8';
   static String youtube = 'https://www.youtube.com/@otaibi82';
-
-  //
 
   //links
   static String url = 'http://www.drosq8.com';

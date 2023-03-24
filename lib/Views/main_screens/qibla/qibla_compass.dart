@@ -39,7 +39,7 @@ class _QiblahCompassState extends State<QiblahCompass> {
           switch (snapshot.data!.status) {
             case LocationPermission.always:
             case LocationPermission.whileInUse:
-              return QiblahCompassWidget();
+              return const QiblahCompassWidget();
 
             case LocationPermission.denied:
               return LocationErrorWidget(
@@ -61,7 +61,7 @@ class _QiblahCompassState extends State<QiblahCompass> {
           }
         } else {
           return LocationErrorWidget(
-            error: "Please enable Location service",
+            error: "الرجاء تفعيل خدمة الموقع",
             callback: _checkLocationStatus,
           );
         }

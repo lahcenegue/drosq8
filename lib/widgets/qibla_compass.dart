@@ -1,24 +1,14 @@
 import 'package:drosq8/Views/main_screens/qibla/loading_indicator.dart';
+import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'dart:math' show pi;
 
-class QiblahCompassWidget extends StatelessWidget {
-  // final _compassSvg = SvgPicture.asset('assets/images/compass.svg');
-  final _compassSvg = Image.asset('assets/images/compass2.png');
-  final _needleSvg = Image.asset(
-    'assets/images/kaaba.png',
-    height: 40,
-  );
-  // final _needleSvg = SvgPicture.asset(
-  //   'assets/images/needle.svg',
-  //   fit: BoxFit.contain,
-  //   height: 300,
-  //   alignment: Alignment.center,
-  // );
+import 'package:google_fonts/google_fonts.dart';
 
-  QiblahCompassWidget({super.key});
+class QiblahCompassWidget extends StatelessWidget {
+  const QiblahCompassWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +24,47 @@ class QiblahCompassWidget extends StatelessWidget {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Transform.rotate(
-              angle: 0,
-              //angle: (qiblahDirection.qiblah * (pi / 180) * -1),
+            SvgPicture.asset(
+              ConstantManager.kaaba,
+              fit: BoxFit.contain,
+              height: MediaQuery.of(context).size.height * 0.08,
               alignment: Alignment.center,
-              child: _needleSvg,
+              color: qiblahDirection.offset.round() ==
+                      qiblahDirection.direction.round()
+                  ? Colors.green
+                  : Colors.black,
             ),
-            const SizedBox(height: 60),
-            Transform.rotate(
-              angle: (qiblahDirection.direction * (pi / 180) * -1),
-              child: _compassSvg,
+            const SizedBox(height: 10),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.50,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Transform.rotate(
+                    angle: (qiblahDirection.qiblah * (pi / 180) * -1),
+                    alignment: Alignment.center,
+                    child: SvgPicture.asset(
+                      ConstantManager.arrow,
+                      fit: BoxFit.contain,
+                      height: MediaQuery.of(context).size.height * 0.50,
+                      alignment: Alignment.center,
+                    ),
+                  ),
+
+                  //boussol
+                  Transform.rotate(
+                    angle: (qiblahDirection.direction * (pi / 180) * -1),
+                    child: SvgPicture.asset(
+                      ConstantManager.compass,
+                      height: MediaQuery.of(context).size.height * 0.50,
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 20),
             Container(
               height: 60,
               width: MediaQuery.of(context).size.width,
@@ -55,8 +74,28 @@ class QiblahCompassWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("${qiblahDirection.offset.toStringAsFixed(3)}°")
+                  Image.asset(
+                    'assets/images/move.png',
+                    height: 30,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "زاوية القبلة:",
+                    style: GoogleFonts.cairo(
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.25),
+                  Text(
+                    "${qiblahDirection.offset.toStringAsFixed(3)}°",
+                    style: GoogleFonts.cairo(
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                  ),
                 ],
               ),
             ),

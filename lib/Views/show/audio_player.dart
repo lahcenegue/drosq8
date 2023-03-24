@@ -56,9 +56,7 @@ class _Mp3PlayerState extends State<Mp3Player> {
   Widget build(BuildContext context) {
     hvm.addListener(() {
       if (mounted) {
-        setState(() {
-          // Your state change code goes here
-        });
+        setState(() {});
       }
     });
 
@@ -75,95 +73,104 @@ class _Mp3PlayerState extends State<Mp3Player> {
           appBar: AppBar(
             title: Text(widget.name),
           ),
-          body: Column(
-            children: [
-              const SizedBox(height: 50),
-              Container(
-                height: 220,
-                width: 220,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF1e84c4),
-                      Color(0xFF0f4363),
+          body: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
+                Container(
+                  height: 220,
+                  width: 220,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF1e84c4),
+                        Color(0xFF0f4363),
+                      ],
+                    ),
+                  ),
+                  child: Image.asset(ConstantManager.sound),
+                ),
+                const SizedBox(height: 60),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  child: Text(
+                    widget.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.cairo(
+                        textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    )),
+                  ),
+                ),
+                const SizedBox(height: 70),
+                Visibility(
+                  visible: hvm.contentData!.link == '' ? false : true,
+                  child: Column(
+                    children: [
+                      SliderTheme(
+                        data: const SliderThemeData(
+                          trackHeight: 5,
+                        ),
+                        child: Slider(
+                          thumbColor: Colors.white,
+                          min: 0,
+                          max: duration.inSeconds.toDouble(),
+                          value: position.inSeconds.toDouble(),
+                          activeColor: const Color(0xFF1E85C6),
+                          inactiveColor: const Color(0xFFD9D9D9),
+                          onChanged: (value) async {
+                            final position = Duration(seconds: value.toInt());
+                            await audioPlayer.seek(position);
+                            //await audioPlayer.resume();
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(formatTime(position)),
+                            Text(formatTime(duration - position)),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 58,
+                        width: 58,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        child: IconButton(
+                          onPressed: () async {
+                            if (isPlaying) {
+                              await audioPlayer.pause();
+                            } else {
+                              await audioPlayer.play(UrlSource(
+                                  'https://www.drosq8.com/${hvm.contentData!.link}'));
+                            }
+                          },
+                          icon: Icon(
+                            isPlaying ? Icons.pause : Icons.play_arrow,
+                          ),
+                          color: ConstantManager.mainColor,
+                          iconSize: 28,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                child: Image.asset(ConstantManager.sound),
-              ),
-              const SizedBox(height: 60),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 1.2,
-                child: Text(
-                  widget.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.cairo(
-                      textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                  )),
-                ),
-              ),
-              const SizedBox(height: 70),
-              SliderTheme(
-                data: const SliderThemeData(
-                  trackHeight: 5,
-                ),
-                child: Slider(
-                  thumbColor: Colors.white,
-                  min: 0,
-                  max: duration.inSeconds.toDouble(),
-                  value: position.inSeconds.toDouble(),
-                  activeColor: const Color(0xFF1E85C6),
-                  inactiveColor: const Color(0xFFD9D9D9),
-                  onChanged: (value) async {
-                    final position = Duration(seconds: value.toInt());
-                    await audioPlayer.seek(position);
-                    //await audioPlayer.resume();
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(formatTime(position)),
-                    Text(formatTime(duration - position)),
-                  ],
-                ),
-              ),
-              Container(
-                height: 58,
-                width: 58,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: IconButton(
-                  onPressed: () async {
-                    if (isPlaying) {
-                      await audioPlayer.pause();
-                    } else {
-                      await audioPlayer.play(UrlSource(
-                          'https://www.drosq8.com/${hvm.contentData!.link}'));
-                      // await audioPlayer.play(
-                      //     'https://www.drosq8.com/${hvm.contentData!.link}');
-                    }
-                  },
-                  icon: Icon(
-                    isPlaying ? Icons.pause : Icons.play_arrow,
-                  ),
-                  color: ConstantManager.mainColor,
-                  iconSize: 28,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
