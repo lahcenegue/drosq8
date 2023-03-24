@@ -1,6 +1,7 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
 import 'package:drosq8/Views/categories_list.dart';
 import 'package:drosq8/Views/info.dart';
+import 'package:drosq8/Views/main_screens/qibla/qibla_screen.dart';
 import 'package:drosq8/Views/main_screens/quran/quran_list.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
@@ -414,7 +415,14 @@ class _MainScreenState extends State<MainScreen> {
 
                 // quibla
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const QiblaScreen(),
+                      ),
+                    );
+                  },
                   child: Container(
                     height: 220,
                     width: 180,

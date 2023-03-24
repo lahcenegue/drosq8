@@ -32,8 +32,8 @@ class SurahItem extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 28,
-              width: 28,
+              height: 30,
+              width: 30,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(ConstantManager.ayahNum),

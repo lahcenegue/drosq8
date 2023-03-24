@@ -5,13 +5,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' show pi;
 
 class QiblahCompassWidget extends StatelessWidget {
-  final _compassSvg = SvgPicture.asset('assets/images/compass.svg');
-  final _needleSvg = SvgPicture.asset(
-    'assets/images/needle.svg',
-    fit: BoxFit.contain,
-    height: 300,
-    alignment: Alignment.center,
+  // final _compassSvg = SvgPicture.asset('assets/images/compass.svg');
+  final _compassSvg = Image.asset('assets/images/compass2.png');
+  final _needleSvg = Image.asset(
+    'assets/images/kaaba.png',
+    height: 40,
   );
+  // final _needleSvg = SvgPicture.asset(
+  //   'assets/images/needle.svg',
+  //   fit: BoxFit.contain,
+  //   height: 300,
+  //   alignment: Alignment.center,
+  // );
 
   QiblahCompassWidget({super.key});
 
@@ -26,22 +31,35 @@ class QiblahCompassWidget extends StatelessWidget {
 
         final qiblahDirection = snapshot.data!;
 
-        return Stack(
-          alignment: Alignment.center,
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Transform.rotate(
+              angle: 0,
+              //angle: (qiblahDirection.qiblah * (pi / 180) * -1),
+              alignment: Alignment.center,
+              child: _needleSvg,
+            ),
+            const SizedBox(height: 60),
             Transform.rotate(
               angle: (qiblahDirection.direction * (pi / 180) * -1),
               child: _compassSvg,
             ),
-            Transform.rotate(
-              angle: (qiblahDirection.qiblah * (pi / 180) * -1),
-              alignment: Alignment.center,
-              child: _needleSvg,
+            const SizedBox(height: 50),
+            Container(
+              height: 60,
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF1F0FD),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Row(
+                children: [
+                  Text("${qiblahDirection.offset.toStringAsFixed(3)}°")
+                ],
+              ),
             ),
-            Positioned(
-              bottom: 8,
-              child: Text("${qiblahDirection.offset.toStringAsFixed(3)}°"),
-            )
           ],
         );
       },

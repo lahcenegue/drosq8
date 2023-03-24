@@ -13,31 +13,37 @@ class _QiblaScreenState extends State<QiblaScreen> {
   final _deviceSupport = FlutterQiblah.androidDeviceSensorSupport();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-      padding: const EdgeInsets.all(20),
-      child: FutureBuilder(
-        future: _deviceSupport,
-        builder: (_, AsyncSnapshot<bool?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text("القبلة"),
+          ),
+          body: Container(
+            padding: const EdgeInsets.all(20),
+            child: FutureBuilder(
+              future: _deviceSupport,
+              builder: (_, AsyncSnapshot<bool?> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
 
-          if (snapshot.hasError) {
-            return Center(
-              child: Text("Error: ${snapshot.error.toString()}"),
-            );
-          }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text("Error: ${snapshot.error.toString()}"),
+                  );
+                }
 
-          if (snapshot.data!) {
-            return const QiblahCompass();
-          } else {
-            return const Center(child: Text("UnExpected Error!!"));
-          }
-        },
-      ),
-    ));
+                if (snapshot.data!) {
+                  return const QiblahCompass();
+                } else {
+                  return const Center(child: Text("UnExpected Error!!"));
+                }
+              },
+            ),
+          )),
+    );
   }
 }
