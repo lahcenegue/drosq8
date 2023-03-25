@@ -66,6 +66,7 @@ class BooksMatter extends StatelessWidget {
                 // text
                 Container(
                   height: 80,
+                  width: double.infinity,
                   padding: const EdgeInsets.all(7),
                   decoration: const BoxDecoration(
                     color: Color(0xFFF1F0FD),
