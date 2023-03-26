@@ -18,6 +18,7 @@ class VideoMatter extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
         padding: const EdgeInsets.only(
+          top: 20,
           left: 20,
           right: 20,
         ),

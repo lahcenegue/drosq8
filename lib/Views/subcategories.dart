@@ -56,12 +56,13 @@ class _SubCategoriesState extends State<SubCategories> {
                   child: Scaffold(
                     appBar: AppBar(
                       elevation: 0,
+                      shadowColor: Colors.white,
                       title: Text(widget.name),
                       bottom: PreferredSize(
                         preferredSize:
                             Size.fromHeight(AppBar().preferredSize.height),
                         child: Container(
-                          color: Colors.white,
+                          color: const Color(0xFFfafafa),
                           height: 50,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
@@ -137,25 +138,3 @@ class _SubCategoriesState extends State<SubCategories> {
                 ));
   }
 }
-
-// DefaultTabController(
-//                   length: hvm.listSubCateg!.isEmpty || hvm.listMatter!.isEmpty
-//                       ? 1
-//                       : 2,
-//                   child: Scaffold(
-//                     appBar: AppBar(
-//                       title: Text(widget.name),
-//                       bottom: hvm.listSubCateg!.isEmpty
-//                           ? const TabBar(tabs: [
-//                               Tab(text: 'المواد'),
-//                             ])
-//                           : hvm.listMatter!.isEmpty
-//                               ? const TabBar(tabs: [
-//                                   Tab(text: 'الأقسام'),
-//                                 ])
-//                               : const TabBar(tabs: [
-//                                   Tab(text: 'الأقسام'),
-//                                   Tab(text: 'المواد'),
-//                                 ]),
-//                     ),
-
