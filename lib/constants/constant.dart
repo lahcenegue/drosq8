@@ -9,6 +9,8 @@ class ConstantManager {
   static String header = 'assets/images/header.png';
   static String book = 'assets/images/book.svg';
   static String sound = 'assets/images/sound.png';
+  static String atricle = 'assets/images/article.svg';
+  static String video = 'assets/images/video.svg';
   static String soundIcon = 'assets/images/soundIcon.png';
   static String fajer = 'assets/images/fajer.png';
   static String doher = 'assets/images/doher.png';

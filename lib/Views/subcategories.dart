@@ -1,4 +1,5 @@
 import 'package:drosq8/View_Models/home_view_model.dart';
+import 'package:drosq8/constants/constant.dart';
 import 'package:drosq8/widgets/categories.dart';
 import 'package:drosq8/widgets/matter.dart';
 import 'package:flutter/material.dart';
@@ -54,19 +55,50 @@ class _SubCategoriesState extends State<SubCategories> {
                       : 2,
                   child: Scaffold(
                     appBar: AppBar(
+                      elevation: 0,
                       title: Text(widget.name),
-                      bottom: hvm.listSubCateg!.isEmpty
-                          ? const TabBar(tabs: [
-                              Tab(text: 'المواد'),
-                            ])
-                          : hvm.listMatter!.isEmpty
-                              ? const TabBar(tabs: [
-                                  Tab(text: 'الأقسام'),
-                                ])
-                              : const TabBar(tabs: [
-                                  Tab(text: 'الأقسام'),
-                                  Tab(text: 'المواد'),
-                                ]),
+                      bottom: PreferredSize(
+                        preferredSize:
+                            Size.fromHeight(AppBar().preferredSize.height),
+                        child: Container(
+                          color: Colors.white,
+                          height: 50,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 8,
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                30,
+                              ),
+                              color: Colors.grey[200],
+                            ),
+                            child: TabBar(
+                              labelColor: Colors.white,
+                              unselectedLabelColor: Colors.black,
+                              indicator: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  30,
+                                ),
+                                color: ConstantManager.mainColor,
+                              ),
+                              tabs: hvm.listSubCateg!.isEmpty
+                                  ? [
+                                      const Tab(
+                                        text: 'المواد',
+                                      )
+                                    ]
+                                  : hvm.listMatter!.isEmpty
+                                      ? [const Tab(text: 'الأقسام')]
+                                      : [
+                                          const Tab(text: 'الأقسام'),
+                                          const Tab(text: 'المواد'),
+                                        ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     body: hvm.listSubCateg!.isEmpty
                         ? TabBarView(children: [
@@ -102,7 +134,28 @@ class _SubCategoriesState extends State<SubCategories> {
                                 ],
                               ),
                   ),
-                ),
-              );
+                ));
   }
 }
+
+// DefaultTabController(
+//                   length: hvm.listSubCateg!.isEmpty || hvm.listMatter!.isEmpty
+//                       ? 1
+//                       : 2,
+//                   child: Scaffold(
+//                     appBar: AppBar(
+//                       title: Text(widget.name),
+//                       bottom: hvm.listSubCateg!.isEmpty
+//                           ? const TabBar(tabs: [
+//                               Tab(text: 'المواد'),
+//                             ])
+//                           : hvm.listMatter!.isEmpty
+//                               ? const TabBar(tabs: [
+//                                   Tab(text: 'الأقسام'),
+//                                 ])
+//                               : const TabBar(tabs: [
+//                                   Tab(text: 'الأقسام'),
+//                                   Tab(text: 'المواد'),
+//                                 ]),
+//                     ),
+

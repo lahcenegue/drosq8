@@ -29,6 +29,10 @@ class HomeViewModel extends ChangeNotifier {
 
     jsonMapCat.removeWhere((element) => element.category == 'page');
 
+    jsonMapCat.removeWhere((element) => element.id == '1556');
+
+    jsonMapCat.removeWhere((element) => element.id == '300');
+
     listCateg =
         jsonMapCat.map((e) => CategoriesViewModel(categories: e)).toList();
     notifyListeners();

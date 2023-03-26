@@ -36,24 +36,28 @@ class _GetVideoLinkState extends State<GetVideoLink> {
         ),
       );
     } else {
-      return Scaffold(
-          body: YoutubeViewer(
-        link: hvm.contentData!.link,
-        name: widget.name,
-      ));
+      return Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+            body: Visibility(
+          visible: hvm.contentData!.link == '' ? false : true,
+          child: YoutubeViewer(
+            link: hvm.contentData!.link,
+            name: widget.name,
+          ),
+        )),
+      );
     }
   }
 }
 
 class YoutubeViewer extends StatefulWidget {
-  // final String catId;
   final String name;
   final String link;
   const YoutubeViewer({
     super.key,
     required this.link,
     required this.name,
-    // required this.catId,
   });
 
   @override

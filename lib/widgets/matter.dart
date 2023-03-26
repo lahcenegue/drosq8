@@ -63,7 +63,7 @@ class _MatterViewState extends State<MatterView> {
             hvm: hvm.listMatter!,
           ),
         );
-      } else if (widget.type == 'video') {
+      } else if (widget.type == 'video' || widget.catId == '343') {
         return RefreshIndicator(
           key: _refreshIndicatorKey,
           onRefresh: refreshData,
@@ -79,7 +79,17 @@ class _MatterViewState extends State<MatterView> {
             hvm: hvm.listMatter!,
           ),
         );
+      } else if (widget.catId == '446') {
+        print(widget.catName);
+        return RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: refreshData,
+          child: ArticleMatter(
+            hvm: hvm.listMatter!,
+          ),
+        );
       } else {
+        print(widget.catName);
         return const Center(
           child: Text(
             'قريبا...',

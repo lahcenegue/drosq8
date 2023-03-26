@@ -40,15 +40,16 @@ class BooksMatter extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(08),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(2, 2),
-                    blurRadius: 10,
-                  ),
-                ]),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(08),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(2, 2),
+                  blurRadius: 10,
+                ),
+              ],
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
