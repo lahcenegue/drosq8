@@ -5,6 +5,7 @@ import 'package:drosq8/Views/main_screens/qibla/qibla_screen.dart';
 import 'package:drosq8/Views/main_screens/quran/quran_list.dart';
 import 'package:drosq8/constants/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       Row(
                         children: [
-                          Image.asset(
+                          SvgPicture.asset(
                             ConstantManager.logo,
                             height: 50,
                           ),
@@ -160,7 +161,7 @@ class _MainScreenState extends State<MainScreen> {
                                             ),
                                           ),
                                         ),
-                                        Image.asset(
+                                        SvgPicture.asset(
                                           ConstantManager.fajer,
                                           height: 22,
                                         ),
@@ -194,7 +195,7 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                           ),
-                                          Image.asset(
+                                          SvgPicture.asset(
                                             ConstantManager.doher,
                                             height: 22,
                                           ),
@@ -227,7 +228,7 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                           ),
-                                          Image.asset(
+                                          SvgPicture.asset(
                                             ConstantManager.aser,
                                             height: 22,
                                           ),
@@ -260,7 +261,7 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                           ),
-                                          Image.asset(
+                                          SvgPicture.asset(
                                             ConstantManager.maghreb,
                                             height: 22,
                                           ),
@@ -297,7 +298,7 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                           ),
-                                          Image.asset(
+                                          SvgPicture.asset(
                                             ConstantManager.isha,
                                             height: 22,
                                           ),

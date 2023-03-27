@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 124 120">
+<rect fill="#eab059" x="58.51" y="27.29" width="5.98" height="27.20" rx="2.91"/>
+<rect fill="#eab059" x="-2.97" y="-9.46" transform="translate(51.11,47.11) rotate(-22.7)" width="5.94" height="18.92" rx="2.87"/>
+<rect fill="#eab059" x="-2.96" y="-9.42" transform="translate(71.88,47.05) rotate(22.5)" width="5.92" height="18.84" rx="2.86"/>
+<rect fill="#eab059" x="-2.92" y="-13.42" transform="translate(83.63,50.09) rotate(45.0)" width="5.84" height="26.84" rx="2.45"/>
+<rect fill="#eab059" x="-13.49" y="-2.93" transform="translate(39.42,50.14) rotate(44.8)" width="26.98" height="5.86" rx="2.65"/>
+<rect fill="#eab059" x="-9.46" y="-2.99" transform="translate(36.37,61.74) rotate(22.3)" width="18.92" height="5.98" rx="2.85"/>
+<rect fill="#eab059" x="-9.44" y="-3.02" transform="translate(86.63,61.73) rotate(-22.4)" width="18.88" height="6.04" rx="2.92"/>
+<path fill="#eab059" d="M 71.05,60.95 Q 75.68,64.58 76.04,71.33 A 1.10,1.10 88.3 0 1 74.94,72.50 L 48.29,72.50 Q 46.33,72.50 46.69,70.57 Q 47.77,64.80 51.55,61.26 Q 55.33,57.72 60.61,57.45 Q 66.22,57.17 71.05,60.95 Z"/>
+<path fill="#eab059" d="M 17.52,70.25 A 3.03,2.97 -71.3 0 1 19.89,69.05 L 40.40,69.01 A 3.64,3.52 66.5 0 1 42.94,70.06 Q 45.59,72.69 41.86,72.56 Q 40.20,72.50 40.15,72.50 Q 29.07,72.49 18.00,72.32 Q 15.98,72.29 17.52,70.25 Z"/>
+<path fill="#eab059" d="M 105.49,69.95 Q 106.44,70.73 105.92,71.99 A 0.80,0.73 10.5 0 1 105.20,72.44 L 80.48,72.50 Q 77.51,72.51 79.67,70.46 Q 81.50,68.73 84.07,68.85 Q 86.39,68.97 86.45,68.96 Q 94.99,68.74 103.51,69.36 Q 104.88,69.46 105.49,69.95 Z"/>
+<rect fill="#eab059" x="15.07" y="74.74" width="92.84" height="7.26" rx="3.43"/>
+<rect fill="#eab059" x="35.32" y="86.27" width="52.40" height="5.72" rx="2.81"/>
+<rect fill="#eab059" x="46.99" y="95.99" width="29.04" height="5.76" rx="2.74"/>
+</svg>

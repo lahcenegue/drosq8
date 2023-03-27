@@ -50,7 +50,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/images/icon.png"
   remove_alpha_ios: true
 
 # For information on the generic Dart part of this file, see the
@@ -77,8 +77,8 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: quranFont
+    - family: hafsFont
       fonts:
-        - asset: assets/font/tfont.ttf
+        - asset: assets/font/UthmanicHafs_V20.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

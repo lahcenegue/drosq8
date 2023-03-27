@@ -43,7 +43,7 @@ class SurahItem extends StatelessWidget {
                 child: Text(fileNumber.toString(),
                     style: GoogleFonts.cairo(
                       textStyle: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     )),
@@ -55,11 +55,10 @@ class SurahItem extends StatelessWidget {
               children: [
                 Text(
                   surah[fileNumber - 1],
-                  style: GoogleFonts.cairo(
-                    textStyle: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  style: const TextStyle(
+                    fontFamily: "hafsFont",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 Text(
@@ -78,6 +77,4 @@ class SurahItem extends StatelessWidget {
       ),
     );
   }
-}  
-
-//' --- ',
+}

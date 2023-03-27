@@ -34,7 +34,12 @@ class _QuranViewState extends State<QuranView> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(widget.surahName),
+          title: Text(
+            widget.surahName,
+            style: const TextStyle(
+              fontFamily: "hafsFont",
+            ),
+          ),
         ),
         body: ayah.isEmpty
             ? const Center(
@@ -44,7 +49,7 @@ class _QuranViewState extends State<QuranView> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 20),
                     SizedBox(
                       height: 40,
                       child: Image.asset(
@@ -56,13 +61,14 @@ class _QuranViewState extends State<QuranView> {
                     Directionality(
                       textDirection: TextDirection.rtl,
                       child: Padding(
-                        padding: const EdgeInsets.all(15),
+                        padding:
+                            const EdgeInsets.only(top: 30, left: 25, right: 25),
                         child: Text(
                           surahText,
                           textScaleFactor: 1.3,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                            fontFamily: "quranFont",
+                            fontFamily: "hafsFont",
                             fontSize: 22,
                             color: ConstantManager.ayahColor,
                           ),
@@ -84,7 +90,7 @@ class _QuranViewState extends State<QuranView> {
     ayah = data.split("\n");
     for (var line in ayah) {
       surahText += line;
-      surahText += "(${ayahNum.toString()})";
+      surahText += " (${ayahNum.toString()}) ";
       ayahNum++;
     }
 

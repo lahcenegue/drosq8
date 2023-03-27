@@ -5,18 +5,14 @@ class ConstantManager {
   static String name = 'دروس الكويت';
 
   //images
-  static String logo = 'assets/images/logo.png';
+  static String logo = 'assets/images/logo.svg';
+  static String icon = 'assets/images/icon.png';
   static String header = 'assets/images/header.png';
   static String book = 'assets/images/book.svg';
   static String sound = 'assets/images/sound.png';
   static String atricle = 'assets/images/article.svg';
   static String video = 'assets/images/video.svg';
   static String soundIcon = 'assets/images/soundIcon.png';
-  static String fajer = 'assets/images/fajer.png';
-  static String doher = 'assets/images/doher.png';
-  static String aser = 'assets/images/aser.png';
-  static String maghreb = 'assets/images/maghreb.png';
-  static String isha = 'assets/images/isha.png';
   static String dorossBack = 'assets/images/doros.png';
   static String quranBack = 'assets/images/quran.png';
   static String quiblaBack = 'assets/images/quibla.png';
@@ -24,6 +20,13 @@ class ConstantManager {
   static String quranIcon = 'assets/images/quranIcon.png';
   static String quiblaIcon = 'assets/images/quiblaIcon.png';
   static String ayahNum = 'assets/images/quranNum.png';
+
+  //time
+  static String fajer = 'assets/images/fajer.svg';
+  static String doher = 'assets/images/doher.svg';
+  static String aser = 'assets/images/aser.svg';
+  static String maghreb = 'assets/images/maghreb.svg';
+  static String isha = 'assets/images/isha.svg';
 
   //qibla
   static String locationWrong = 'assets/images/wrong_location.svg';
